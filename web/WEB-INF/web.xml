@@ -10,7 +10,7 @@
         </session-timeout>
     </session-config>
     
-    <display-name>primestrap</display-name>
+    <display-name>Artemis</display-name>
  
     <!-- Change to "Production" when you are ready to deploy -->
     <context-param>

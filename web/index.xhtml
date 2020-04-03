@@ -1,10 +1,44 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
-                xmlns:h="http://java.sun.com/jsf/html"  
-                xmlns:f="http://java.sun.com/jsf/core"  
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
-    <ui:define name="content">                        
-        <h1 class="page-header "> <i class="fa fa-tachometer"></i> Dashboard</h1>
+    <ui:define name="content">    
+        <div class="ui-fluid animated bounceInLeft" >
+            <div class="row">                    
+                <div class="col-lg-12" >
+                    <h1>Sistema ARTEMIS</h1>
+                    <h2>Programación competitiva para todos</h2>
+                </div>
+                <p:separator/>
+                <div class="ibox-content">
+                    <p:growl id="messages"
+                             showDetail="true"
+                             />
+                </div>
+
+                <h:form>
+                    <div class="row">
+                        <div class="col-lg-12" >
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Inserte un valor:"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-2">
+                                <p:inputText value="#{controllerView.currentTestValue}" class="col-lg-6">
+                                    <p:ajax event="keyup" update="idTesting"
+                                            listener="#{controllerView.listener}" />
+                                </p:inputText>
+                            </div>
+                            <div class="col-lg-2">
+                                <h:panelGroup id="idTesting">
+                                    <h:outputText value="#{controllerView.currentTestedValue}" />
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>        
 
