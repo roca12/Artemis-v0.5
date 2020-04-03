@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">
+        <div class="ui-fluid animated bounceInLeft" >
+            <h1>Temario: Programación Competitiva</h1>
+            <p:menu style="width: 100%" toggleable="true">
+                <p:submenu label="Introducción" expanded="false" style="font-size: 20px; color: #000" >
+                    <p:menuitem value="Inicio en programación competitiva" outcome="biblioteca/introduccion"  />
+                </p:submenu>
+                <p:submenu label="Codigo Básico" expanded="false" style="font-size: 20px; color: #000" >
+                    <p:menuitem value="Operadores" outcome="biblioteca/Basico/Operadores"/>
+                    <p:menuitem value="Complejidad de tiempo" outcome="biblioteca/Basico/complejidad de tiempo"/>
+                    <p:menuitem value="Condicionales y ciclos" outcome="biblioteca/Basico/condicionales_ciclos"/>
+                    <p:menuitem value="Excepciones" outcome="biblioteca/Basico/excepciones"/>
+                    <p:menuitem value="Expresiones regulares" outcome="biblioteca/Basico/expresiones_regulares"/>
+                    <p:menuitem value="Lectura y escritura" outcome="biblioteca/Basico/lectura_escritura"/>
+                    <p:menuitem value="Tiempo de ejecución" outcome="biblioteca/Basico/tiempo_ejecucion"/>
+                    <p:menuitem value="Variables básicas" outcome="biblioteca/Basico/variables_basicas"/>
+                </p:submenu>
+                <p:submenu label="Estructuras de datos básicas" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Estructuras en JAVA,C++ y PYTHON" outcome="biblioteca/Estructuras_datos/estructuras"/>
+                </p:submenu>   
+                <p:submenu label="Identidades matemáticas y geométricas" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Identidades basicas" outcome="biblioteca/Identidades/identidades"/>
+                </p:submenu>
+                <p:submenu label="Algoritmos de busquedas" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Busqueda binaria" outcome="biblioteca/Busquedas/binary_search"/>
+                    <p:menuitem value="Busqueda exponencial" outcome="biblioteca/Busquedas/exponential_search"/>
+                    <p:menuitem value="El mayor y el menor en un array" outcome="biblioteca/Busquedas/min_max"/>
+                    <p:menuitem value="Busqueda Fibonacci" outcome="biblioteca/Busquedas/fibonacci_search"/>
+                    <p:menuitem value="Busqueda por saltos" outcome="biblioteca/Busquedas/jump_search"/>
+                    <p:menuitem value="Suma de pares minimas absolutas" outcome="biblioteca/Busquedas/minimum_sum"/>
+                    <p:menuitem value="Busqueda del numero perdido" outcome="biblioteca/Busquedas/missing_no"/>
+                    <p:menuitem value="Busqueda de diferencia de pares" outcome="biblioteca/Busquedas/difference_pair"/>
+                    <p:menuitem value="Busqueda de trios" outcome="biblioteca/Busquedas/ternary_search"/>
+                </p:submenu>
+                <p:submenu label="Algoritmos de ordenamiento" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Ordenamiento burbuja recursivo" outcome="biblioteca/Ordenamiento/bubble_sort"/>
+                    <p:menuitem value="Quick sort" outcome="biblioteca/Ordenamiento/quick_sort"/>
+                    <p:menuitem value="Radix sort" outcome="biblioteca/Ordenamiento/radix_sort"/>
+                    <p:menuitem value="Shell sort" outcome="biblioteca/Ordenamiento/shell_sort"/>
+                    <p:menuitem value="Tim sort" outcome="biblioteca/Ordenamiento/tim_sort"/>
+                    <p:menuitem value="Tree sort" outcome="biblioteca/Ordenamiento/tree_sort"/>
+                    <p:menuitem value="Merge sort" outcome="biblioteca/Ordenamiento/merge_sort"/>
+                    <p:menuitem value="Binary Insertion sort" outcome="biblioteca/Ordenamiento/binary_insertion"/>
+                    <p:menuitem value="Bitonic sort" outcome="biblioteca/Ordenamiento/bitonic_sort"/>
+                    <p:menuitem value="Cocktail sort" outcome="biblioteca/Ordenamiento/cocktail_sort"/>
+                    <p:menuitem value="Comb sort" outcome="biblioteca/Ordenamiento/comb_sort"/>
+                    <p:menuitem value="Counting sort" outcome="biblioteca/Ordenamiento/counting_sort"/>
+                    <p:menuitem value="Cycle sort" outcome="biblioteca/Ordenamiento/cycle_sort"/>
+                    <p:menuitem value="Merge sort de tres vias" outcome="biblioteca/Ordenamiento/3_way_merge"/>
+                    <p:menuitem value="Pigeon Hole sort" outcome="biblioteca/Ordenamiento/pigeon_sort"/>
+                </p:submenu>
+                <p:submenu label="Patrones y manejo de strings" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Algoritmo Aho-Corasick" outcome="biblioteca/Strings/AhoCorasick"/>
+                    <p:menuitem value="Patrones en anagramas" outcome="biblioteca/Strings/anagrams_pattern"/>
+                    <p:menuitem value="Algoritmo de Booyer-Moore" outcome="biblioteca/Strings/boyer_moore"/>
+                    <p:menuitem value="Finite Automata" outcome="biblioteca/Strings/finite_automata"/>
+                    <p:menuitem value="Cotejamiento Knuth-Morris-Pratt" outcome="biblioteca/Strings/KMP_pattern"/>
+                    <p:menuitem value="Algoritmo  Manacher" outcome="biblioteca/Strings/manacher_algo"/> 
+                    <p:menuitem value="Algoritmo Rabin-Karp" outcome="biblioteca/Strings/rabin-karp"/>
+                    <p:menuitem value="Patrones Wildcard" outcome="biblioteca/Strings/wildcard-pattern"/>
+                </p:submenu>
+                <p:submenu label="Algoritmia matemática" expanded="false" style="font-size: 20px; color: #000"> 
+                    <p:menuitem value="Mínimo común multiplo / Máximo común Divisor" outcome="biblioteca/Matematica/GCD_LCM"/>
+                    <p:menuitem value="Test de primalidad" outcome="biblioteca/Matematica/primality_test"/>
+                    <p:menuitem value="Factores primos" outcome="biblioteca/Matematica/prime_factors"/>
+                    <p:menuitem value="Divisibilidad" outcome="biblioteca/Matematica/divisibility"/>
+                    <p:menuitem value="Número de divisores" outcome="biblioteca/Matematica/divisors"/>
+                    <p:menuitem value="Criba de Eratostenes" outcome="biblioteca/Matematica/criba_eratostenes"/>
+                    <p:menuitem value="Ultimo Digito del Fibonacci" outcome="biblioteca/Matematica/fibolastdigit"/>
+                    <p:menuitem value="Fibonacci largo" outcome="biblioteca/Matematica/long_fibo"/>
+                    <p:menuitem value="Es número de Fibonacci?" outcome="biblioteca/Matematica/is_fibo"/>
+                    <p:menuitem value="Todas las permutaciones de un conjunto" outcome="biblioteca/Matematica/all_perm"/>
+                    <p:menuitem value="Combinatoria" outcome="biblioteca/Matematica/combinatory"/>
+                    <p:menuitem value="Combinatoria compuesta" outcome="biblioteca/Matematica/compose_comb"/>
+                    <p:menuitem value="Subconjuntos de un conjunto" outcome="biblioteca/Matematica/all_sets"/>
+                    <p:menuitem value="Las torres de hanoi" outcome="biblioteca/Matematica/hanoi"/>
+                    <p:menuitem value="AX+BY=N" outcome="biblioteca/Matematica/ax_by"/>
+                    <p:menuitem value="A%X=B" outcome="biblioteca/Matematica/amody"/>
+                    <p:menuitem value="Factorial" outcome="biblioteca/Matematica/factorial"/>
+                    <p:menuitem value="Factorial grande" outcome="biblioteca/Matematica/big_factorial"/>
+                    <p:menuitem value="Coeficientes binomiales" outcome="biblioteca/Matematica/binomial_coeff"/>
+                    <p:menuitem value="Identidad de Cassini" outcome="biblioteca/Matematica/cassini_identity"/>
+                    <p:menuitem value="e^x" outcome="biblioteca/Matematica/epowx"/>
+                    <p:menuitem value="Teorema de Euclides Euler" outcome="biblioteca/Matematica/euclid_euler"/>
+                    <p:menuitem value="Algoritmo Euclideano" outcome="biblioteca/Matematica/euclidean_algo"/>
+                    <p:menuitem value="Totient de Euler" outcome="biblioteca/Matematica/euler_totient"/>
+                    <p:menuitem value="Número de dígitos de un factorial" outcome="biblioteca/Matematica/digits_factorial"/>
+                    <p:menuitem value="Número de dígitos de un factorial optimizado" outcome="biblioteca/Matematica/digits_optimized"/>
+                    <p:menuitem value="El pequeño teorema de Fermar" outcome="biblioteca/Matematica/fermat_theorem"/>
+                    <p:menuitem value="Ratio dorado de Fibonacci" outcome="biblioteca/Matematica/fibo_golden_ratio"/>
+                    <p:menuitem value="Maximo común divisor de numeros flotantes" outcome="biblioteca/Matematica/float_common_divisor"/>
+                    <p:menuitem value="Producto de fracciones" outcome="biblioteca/Matematica/fractions_product"/>
+                    <p:menuitem value="El problema de Flavio Josefo" outcome="biblioteca/Matematica/josephus"/>
+                    <p:menuitem value="Numeros cardinales y ordinales" outcome="biblioteca/Matematica/cardinal_ordinal"/>
+                    <p:menuitem value="Numeros romanos" outcome="biblioteca/Matematica/roman_numbers"/>
+                    <p:menuitem value="Maximo común divisor multiple" outcome="biblioteca/Matematica/multiple_common_divisor"/>
+                    <p:menuitem value="Teorema de Hardy Ramanujan" outcome="biblioteca/Matematica/hardy_ramanujan"/>
+                    <p:menuitem value="Numero falso" outcome="biblioteca/Matematica/hoax_number"/>
+                    <p:menuitem value="La potencia mas grande que divide un factorial" outcome="biblioteca/Matematica/largest_pow"/>
+                    <p:menuitem value="Minimo común multiplo en un array" outcome="biblioteca/Matematica/lcm_array"/>
+                    <p:menuitem value="Numeros de leonardo" outcome="biblioteca/Matematica/leonardo_number"/>
+                    <p:menuitem value="Exponenciación modular" outcome="biblioteca/Matematica/modular_exp"/>
+                    <p:menuitem value="Totient de Euler multiple" outcome="biblioteca/Matematica/multiple_euler"/>
+                    <p:menuitem value="Sumatoria de naturales coprimos" outcome="biblioteca/Matematica/comprime_sumatory"/>
+                    <p:menuitem value="Teorema de Zeckendorf" outcome="biblioteca/Matematica/zeckendorf_theorem"/>
+                    <p:menuitem value="Teorema de Rosser" outcome="biblioteca/Matematica/rosser_theorem"/>
+                    <p:menuitem value="Criba de Eratostenes optimizada" outcome="biblioteca/Matematica/sieve_eratosthenes"/>
+                    <p:menuitem value="Numeros de Smith" outcome="biblioteca/Matematica/smith_number"/>
+                    <p:menuitem value="Numeros Catalanes" outcome="biblioteca/Matematica/catalan_numbers"/>
+                    <p:menuitem value="Numeros de Charmichael" outcome="biblioteca/Matematica/charmichael_number"/>
+                    <p:menuitem value="Secuencia de Stern_Brocot" outcome="biblioteca/Matematica/stern_brocot"/>
+                    <p:menuitem value="Secuencia de Sylvester" outcome="biblioteca/Matematica/sylvester_seq"/>
+                    <p:menuitem value="Secuencia de Aliquot" outcome="biblioteca/Matematica/aliquot_seq"/>
+                    <p:menuitem value="Secuencia de Juggler" outcome="biblioteca/Matematica/juggler_seq"/>
+                    <p:menuitem value="Secuencia de Moser De Brujin" outcome="biblioteca/Matematica/moserdebrujin_seq"/>
+                    <p:menuitem value="Secuencia de Newman_Conway" outcome="biblioteca/Matematica/newman_conway"/>
+                    <p:menuitem value="Secuencia de Padovan" outcome="biblioteca/Matematica/padovan_seq"/>
+                    <p:menuitem value="Secuencia de Recaman" outcome="biblioteca/Matematica/recaman_seq"/>
+                </p:submenu>
+                <p:submenu label="Algoritmia geometrica" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Longitud de arco" outcome="biblioteca/Geometria/arc_length"/>
+                    <p:menuitem value="Area de un sector circular" outcome="biblioteca/Geometria/circular_sector"/>
+                    <p:menuitem value="Triangulo de monedas ordenadas" outcome="biblioteca/Geometria/coin_triangle"/>
+                    <p:menuitem value="Area del circulo" outcome="biblioteca/Geometria/circle_area"/>
+                    <p:menuitem value="Circulo circunscrito en un triangulo equilatero" outcome="biblioteca/Geometria/circumscribed_ circle"/>
+                    <p:menuitem value="Casco convexo" outcome="biblioteca/Geometria/convex_hull"/>
+                    <p:menuitem value="Sumatoria de cortes" outcome="biblioteca/Geometria/cuts_sumatory"/>
+                    <p:menuitem value="Formula de Heron" outcome="biblioteca/Geometria/heron_formula"/>
+                    <p:menuitem value="Radio de un circulo dado por tres puntos" outcome="biblioteca/Geometria/circle_radious"/>
+                    <p:menuitem value="Dimensiones de un trangulo de angulos correctos" outcome="biblioteca/Geometria/right_angled"/>
+                    <p:menuitem value="Area de un hexagono" outcome="biblioteca/Geometria/hexagon_area"/>
+                    <p:menuitem value="Area de un poligono" outcome="biblioteca/Geometria/area_polygon"/>
+                    <p:menuitem value="Intersección de dos lineas" outcome="biblioteca/Geometria/line_intersection"/>
+                    <p:menuitem value="Punto medio de una linea" outcome="biblioteca/Geometria/mid_point"/>
+                    <p:menuitem value="Linea a traves de dos puntos" outcome="biblioteca/Geometria/through_points"/>
+                    <p:menuitem value="Altura minima de un triangulo" outcome="biblioteca/Geometria/height_triangle"/>
+                    <p:menuitem value="Perimetro usando bloques" outcome="biblioteca/Geometria/perimeter_blocks"/>
+                    <p:menuitem value="Punto dentro de un triangulo" outcome="biblioteca/Geometria/inside_triangle"/>
+                    <p:menuitem value="Dividir una linea dado un ratio" outcome="biblioteca/Geometria/ratio_line"/>
+                    <p:menuitem value="Rectangulos en NxM" outcome="biblioteca/Geometria/rectangles_NxM"/>
+                    <p:menuitem value="Cuadrados 2x2 en un triangulo" outcome="biblioteca/Geometria/squares_triangle"/>
+                    <p:menuitem value="Suma de Manhattan" outcome="biblioteca/Geometria/manhattan_sum"/>
+                    <p:menuitem value="Tres puntos colineales" outcome="biblioteca/Geometria/collinear_points"/>
+                    <p:menuitem value="Angulos de un triangulo" outcome="biblioteca/Geometria/triangle_angles"/>
+                </p:submenu>
+                <p:submenu label="Manejo binario BitWise" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Sumar uno" outcome="biblioteca/BitWise/add_one"/>
+                    <p:menuitem value="Palindromo binario" outcome="biblioteca/BitWise/binary_palindrome"/>
+                    <p:menuitem value="Multiplicación de Booth" outcome="biblioteca/BitWise/booth_multiply"/>
+                    <p:menuitem value="El numero mas cercano con los mismos bits" outcome="biblioteca/BitWise/closest_number"/>
+                    <p:menuitem value="Gray a binario y viceversa" outcome="biblioteca/BitWise/gray_code"/>
+                    <p:menuitem value="Conteo de A a B" outcome="biblioteca/BitWise/count_atob"/>
+                    <p:menuitem value="Conteo de sets de bits" outcome="biblioteca/BitWise/count_sets"/>
+                    <p:menuitem value="Euclides sin modular y división" outcome="biblioteca/BitWise/euclid_mod"/>
+                    <p:menuitem value="Encontrar duplicados en un array de bits" outcome="biblioteca/BitWise/duplicates_bit"/>
+                    <p:menuitem value="Códigos de Gray de N" outcome="biblioteca/BitWise/gray_codes"/>
+                    <p:menuitem value="Multiplicación de Karatsuba" outcome="biblioteca/BitWise/karatsuba_multiply"/>
+                    <p:menuitem value="Maximos unos consecutivos" outcome="biblioteca/BitWise/consecutive_one"/>
+                    <p:menuitem value="Maximo subarray XOR" outcome="biblioteca/BitWise/subarray_xor"/>
+                    <p:menuitem value="Multiplicar por 7" outcome="biblioteca/BitWise/multiply_seven"/>
+                    <p:menuitem value="N número Mágico" outcome="biblioteca/BitWise/magic_number"/>
+                    <p:menuitem value="N cuadrado sin usar POW" outcome="biblioteca/BitWise/n_square"/>
+                    <p:menuitem value="Intercambio par impar" outcome="biblioteca/BitWise/odd_even"/>
+                    <p:menuitem value="Ocurrencia impar" outcome="biblioteca/BitWise/odd_ocurrence"/>
+                    <p:menuitem value="Signos opuestos" outcome="biblioteca/BitWise/opposite_signs"/>
+                    <p:menuitem value="Concatenaciones pandigitales" outcome="biblioteca/BitWise/pandigital_concat"/>
+                    <p:menuitem value="Potencia de 4" outcome="biblioteca/BitWise/power_four"/>
+                    <p:menuitem value="Multiplicación de la granjera rusa" outcome="biblioteca/BitWise/russian_peasant"/>
+                </p:submenu>
+                <p:submenu label="Grafos y Arboles" expanded="false" style="font-size: 20px; color: #000">
+                    <p:menuitem value="Matriz de adyacencia" outcome="biblioteca/Grafos/matrix_adyacency"/>
+                    <p:menuitem value="Lista de adyacencia" outcome="biblioteca/Grafos/list_adyacency"/>
+                    <p:menuitem value="BFS primera busqueda en anchura" outcome="biblioteca/Grafos/BFS"/>
+                    <p:menuitem value="Todos los caminos BFS" outcome="biblioteca/Grafos/BFS_paths"/>
+                    <p:menuitem value="El camino mas corto en un grafo binario" outcome="biblioteca/Grafos/binary_graph"/>
+                    <p:menuitem value="Conteo de todos los caminos" outcome="biblioteca/Grafos/count_paths"/>
+                    <p:menuitem value="Ciclo en un grafo dirigido" outcome="biblioteca/Grafos/cycle_graph"/>
+                    <p:menuitem value="DFS primera busqueda en profundidad" outcome="biblioteca/Grafos/DFS"/>
+                    <p:menuitem value="Cerramiento transitivo DFS" outcome="biblioteca/Grafos/transitive_clousure"/>
+                    <p:menuitem value="BFS de grafos desconexos" outcome="biblioteca/Grafos/disconnected_graph"/>
+                    <p:menuitem value="Ciclo de euler en grafo dirigido" outcome="biblioteca/Grafos/eulerian_cycle"/>
+                    <p:menuitem value="Ciclo de euler en grafo no dirigido" outcome="biblioteca/Grafos/eulerian_path"/>
+                    <p:menuitem value="Algoritmo de Floyd Warshall, todos los caminos cortos entre todos los pares" outcome="biblioteca/Grafos/floyd_warshall"/>
+                </p:submenu>
+            </p:menu>
+        </div>
+    </ui:define>  
+</ui:composition>
+
+

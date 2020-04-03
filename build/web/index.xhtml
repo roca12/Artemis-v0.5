@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">    
+        <div class="ui-fluid animated bounceInLeft" >
+            <div class="row">                    
+                <div class="col-lg-12" >
+                    <h1>Sistema ARTEMIS</h1>
+                    <h2>Programación competitiva para todos</h2>
+                </div>
+                <p:separator/>
+                <div class="ibox-content">
+                    <p:growl id="messages"
+                             showDetail="true"
+                             />
+                </div>
+
+                <h:form>
+                    <div class="row">
+                        <div class="col-lg-12" >
+                            <div class="col-lg-12">
+                                El crecimiento y expansión que ha presentado la informática ha hecho que las grandes compañías se interesen en vincular excelentes profesionales a su equipo de trabajo, en especial se dedican a buscar buenos programadores para su grupo de desarrollo, los cuales pueden ser incorporados desde eventos que se han estado realizando hace ya varios años, estos han tomado por nombre “maratones de programación”, las cuales se llevan a cabo anualmente, en estas participan varias universidades de todo el mundo donde los problemas expuestos son de tipo lógico, matemático, trigonométrico, entre otros, estos deben resolverse usando algoritmos de programación en el menor tiempo posible.
+                            </div>
+                        </div>
+                    </div>
+                    <p:spacer/>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-lg-12">                                
+                                Dichos eventos tienen como finalidad principalmente destacar a los estudiantes con mayor habilidad y pasión en el arte de la codificación para que posteriormente compitan a nivel regional, nacional y mundialmente. Además de que los estudiantes destacados sean llamados por importantes compañías para su vinculación laboral.
+                            </div>
+                        </div>
+                    </div>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <div class="row">
+                        <div class="col-lg-8" >
+                            <div class="col-lg-6" >
+                                <p:galleria value="#{indexViewController.images}" var="image" panelWidth="700" panelHeight="500" showCaption="true">
+                                    <p:graphicImage value="/resources/imagenes/#{image}" 
+                                                    alt="Google Games, Maratones internas y Competencias clasificatorias nacionales" 
+                                                    title="Universidad ECCI en diferentes competencias"
+                                                    name="imagenes/#{image}" height="500" width="700"/>  
+                                </p:galleria>
+                            </div> 
+                        </div>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>        
+
