@@ -1,12 +1,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ui:include src="leftMenu.xhtml" />
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">                    
-                <ui:insert name="content" />                    
+                <ui:insert name="content" />   
+                <p:spacer/>
+                <p:spacer/>
+                <p:spacer/>
+                <!-- Footer -->
+                <div class="footer">
+                    <div>
+                        <outer>
+                           Grupo de programación competitiva 
+                        </outer>
+                        <strong>
+                            <a target="_blank" href="https://www.ecci.edu.co/">UNIVERSIDAD ECCI</a>
+                        </strong>  
+                    </div>
+                </div>
             </div>
         </div>
     </div>

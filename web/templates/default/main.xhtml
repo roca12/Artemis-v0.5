@@ -12,17 +12,18 @@
             <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            <title>primestrap</title>
+            <title>Artemis</title>
         </f:facet>
 
         <f:facet name="middle">
             <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
-
             <h:outputStylesheet name="css/dashboard.css" />
+            <h:outputStylesheet name="bootstrap/css/animate.css"/>
+            <h:outputStylesheet name="bootstrap/css/switchery.css"/>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
-
             <h:outputScript name="bootstrap/js/bootstrap.js" />
+            <f:loadBundle basename="bundle.textos" var="msg"/>
         </f:facet>
 
         <f:facet name="last">
@@ -34,5 +35,7 @@
     <h:body>
         <ui:include src="header.xhtml" />
         <ui:include src="content.xhtml" />
+        
     </h:body>
+
 </html>

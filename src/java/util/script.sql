@@ -1,0 +1,1 @@
+CREATE TABLE usuarios (id INTEGER AUTO_INCREMENT NOT NULL, carrera VARCHAR(255), pass VARCHAR(255), recovery VARCHAR(255), semestre INTEGER, usuario VARCHAR(255), PRIMARY KEY (id))
