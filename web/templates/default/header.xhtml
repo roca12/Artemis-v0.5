@@ -1,18 +1,21 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="http://localhost:7001/Artemis-war/index.xhtml">Sistema ARTEMIS</a>
+                <a class="navbar-brand" href="#{indexViewController.links()}index.xhtml">Sistema ARTEMIS</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:7001/Artemis-war/index.xhtml">Inicio</a></li>
-                    <li><a href="#">Calendario</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                    <li><a href="http://localhost:7001/Artemis-war/login.xhtml">Iniciar sesión</a></li>
+                    <li><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
+                    <li><a href="#{indexViewController.links()}calendario.xhtml">Calendario</a></li>
+                    <li><a href="#{indexViewController.links()}ayuda.xhtml">Ayuda</a></li>
+                    <li><a href="#{indexViewController.links()}login.xhtml">Iniciar sesión</a></li>
                 </ul>
-                
+
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
     <h5>Información general</h5>
         <ul class="nav nav-sidebar" >
-            <li class="activnav nav-sidebae"><a href="http://localhost:7001/Artemis-war/index.xhtml">Inicio</a></li>
+            <li class="activnav nav-sidebae"><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
             <li><a href="#">Programación competitiva</a></li>
             <li><a href="#">Competencias existentes</a></li>
             <li><a href="#">Lenguajes de programación</a></li>
@@ -12,17 +12,17 @@
 
         <h5>Biblioteca</h5>
         <ul class="nav nav-sidebar">
-            <li><a href="http://localhost:7001/Artemis-war/biblioteca.xhtml">Temario</a></li>
-            <li><a href="">Paginas de entrenamiento</a></li>
-            <li><a href="">Inscripción a competencias</a></li>
+            <li><a href="#{indexViewController.links()}biblioteca.xhtml">Temario</a></li>
+            <li><a href="#{indexViewController.links()}biblioteca/paginasentrenamiento.xhtml">Paginas de entrenamiento</a></li>
+            <li><a href="#{indexViewController.links()}biblioteca/Inscripcion.xhtml">Inscripción a competencias</a></li>
             <li><a href="">DOMjudge</a></li>
         </ul>
         <h5>Paginas relacionadas</h5>
         <ul class="nav nav-sidebar">
-            <li><a href="">Online Judge</a></li>
-            <li><a href="">CodeChef</a></li>
-            <li><a href="">CodeForces</a></li>
-            <li><a href="">Google CodeJAM</a></li>
+            <li><a href="https://onlinejudge.org/">Online Judge</a></li>
+            <li><a href="https://www.codechef.com/">CodeChef</a></li>
+            <li><a href="https://codeforces.com/">CodeForces</a></li>
+            <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM</a></li>
         </ul>    
 </ui:composition>
 
