@@ -7,7 +7,103 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <div class="row">
+                <h1><i class="fa fa-fw fa-laptop"></i> Acerca de los lenguajes</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <h4 style="display: block; width:100%; text-align: justify">En el mercado existen muchísimos lenguajes de programación que sirven para infinidad de áreas aplicadas, tales como la matemática, la medicina, la administración aeroespacial, el control de gobierno, entre otras, por ahora solo tendremos en cuenta 3 lenguajes únicamente los cuales son:</h4>
+                </div>
+                <p:separator/>
+                <p:spacer/>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h2 style="color: red"><i class="fa fa-fw fa-chevron-right"/> Java 1.8</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/java.png" width="100" height="100"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 ">
+                        <p:outputLabel value="#{msg['artemis.lenguajes.java.intro']}" style=" width:100%; text-align: justify"/>
+                    </div>
+                    <div class="col-md-10 ">
+                        Los entornos de desarrollo recomendados son Eclipse IDE 2019-06 y NetBeans 8.2 
+                    </div>
+                    <div class="col-md-10 ">
+                        <h3>Links</h3>
+                        <p:spacer/>
+                        <div class="row">
+                            <strong>Eclipse: </strong> <p:link value="https://www.eclipse.org/downloads" href="https://www.eclipse.org/downloads"/>
+                        </div>
+                        <div class="row">
+                            <strong>NetBeans: </strong> <p:link value="https://netbeans.org/downloads/old/8.2/" href="https://netbeans.org/downloads/old/8.2/"/>
+                        </div>
+                    </div>
+                </div>
+                <p:separator/>
+                <p:spacer/>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h2 style="color: red"><i class="fa fa-fw fa-chevron-right"/> Python 3.7</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/python.png" width="100" height="100"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 ">
+                        <p:outputLabel value="#{msg['artemis.lenguajes.python.intro']}" style=" width:100%; text-align: justify"/>
+                    </div>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <div class="col-md-10 ">
+                        Los entornos de desarrollo recomendados son PyCharm y IDLE  
+                    </div>
+                    <div class="col-md-10 ">
+                        <h3>Links</h3>
+                        <p:spacer/>
+                        <div class="row">
+                            <strong>PyCharm: </strong> <p:link value="https://www.jetbrains.com/es-es/pycharm/" href="https://www.jetbrains.com/es-es/pycharm/"/>
+                        </div>
+                        <div class="row">
+                            <strong>IDLE: </strong> <p:link value="https://www.python.org/downloads/" href="https://www.python.org/downloads/"/>
+                        </div>
+                    </div>
+                </div>
+                <p:separator/>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h2 style="color: red"><i class="fa fa-fw fa-chevron-right"/> C++ 11</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/C++.png" width="100" height="100"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 ">
+                        <p:outputLabel value="#{msg['artemis.lenguajes.cpp.intro']}" style=" width:100%; text-align: justify"/>
+                    </div>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <div class="col-md-10 ">
+                        Los entornos de desarrollo recomendados son CodeBlocks y Zinjai  
+                    </div>
+                    <div class="col-md-10 ">
+                        <h3>Links</h3>
+                        <p:spacer/>
+                        <div class="row">
+                            <strong>CodeBlocks: </strong> <p:link value="http://www.codeblocks.org/downloads" href="http://www.codeblocks.org/downloads"/>
+                        </div>
+                        <div class="row">
+                            <strong>Zinjai: </strong> <p:link value="http://zinjai.sourceforge.net/" href="http://zinjai.sourceforge.net/"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </ui:define>  
 </ui:composition>

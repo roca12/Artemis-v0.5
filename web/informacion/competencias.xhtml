@@ -7,7 +7,44 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <div class="row">
+                <h1><i class="fa fa-fw fa-trophy"></i>Algunas competencias y retos de programación competitiva</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <h2 style="color: red"><i class="fa fa-fw fa-chevron-circle-right"></i> #{msg['artemis.competencias.icpc.title']} </h2>
+                </div>
+                <div class="col-lg-10">
+                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/ICPC.jpg" width="600" height="400"/>
+                    <p:outputLabel value="#{msg['artemis.competencias.icpc.text']}" style="text-align: justify"/>
+                    <p:spacer/>
+                    <p:outputLabel value="#{msg['artemis.competencias.icpc.textb']}" style="text-align: justify"/>
+                    <p:spacer/>
+                    <p:outputLabel value="#{msg['artemis.competencias.icpc.textc']}" style="text-align: justify"/>
+                    <br/>
+                    <p:outputLabel value="#{msg['artemis.competencias.masinfo.label']}" style="text-align: justify; color: darkblue">
+                        <p:link value="https://icpc.baylor.edu" href="https://icpc.baylor.edu/"/> 
+                    </p:outputLabel> 
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <h2 style="color: red"><i class="fa fa-fw fa-chevron-circle-right"></i> #{msg['artemis.competencias.google.title']} </h2>
+                </div>
+                <div class="col-lg-10">
+                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/google.png" width="800" height="400"/>
+                    <p:outputLabel value="#{msg['artemis.competencias.google.text']}" style="text-align: justify"/>
+                    <p:spacer/>
+                    <p:outputLabel value="#{msg['artemis.competencias.google.textb']}" style="text-align: justify"/>
+                    <p:spacer/>
+                    <p:outputLabel value="#{msg['artemis.competencias.google.textc']}" style="text-align: justify"/>
+                    <br/>
+                    <p:outputLabel value="#{msg['artemis.competencias.masinfo.label']}" style="text-align: justify; color: darkblue">
+                        <p:link value="https://codingcompetitions.withgoogle.com" href="https://codingcompetitions.withgoogle.com/"/> 
+                    </p:outputLabel> 
+                </div>
+            </div>
+
         </div>
     </ui:define>  
 </ui:composition>
