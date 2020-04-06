@@ -1,4 +1,4 @@
-package beans;
+package com.artemis.beans;
 
 import java.io.IOException;
 import java.util.ArrayList;
