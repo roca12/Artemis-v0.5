@@ -7,7 +7,29 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <div class="row">
+                <h1><i class="fa fa-fw fa-graduation-cap"></i> ¿Qué es la programación competitiva?</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-12" >
+                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/GPC (83).jpg" width="600" height="400"></h:graphicImage>
+                    <p:outputLabel value="#{msg['artemis.pcompetitiva.intro.img.title']}" style="font-size: 10px"/>
+                    <p:spacer/>
+                </div>
+                <p:spacer/>
+                <div class="col-lg-10">
+                    <p:outputLabel value="#{msg['artemis.pcompetitiva.intro']}" style="text-align: justify"/>
+                </div>
+                <div class="col-lg-10">
+                    <p:outputLabel value="#{msg['artemis.pcompetitiva.introb']}" style="text-align: justify"/>
+                </div>
+                <div class="col-lg-10">
+                    <h1><i class="fa fa-fw fa-graduation-cap"></i> ¿Qué es un problema de programación competitiva?</h1>
+                </div>
+                <div class="col-lg-10">
+                    <p:outputLabel value="#{msg['artemis.pcompetitiva.problema.intro']}" style="text-align: justify"/>
+                </div>
+            </div>
         </div>
     </ui:define>  
 </ui:composition>
