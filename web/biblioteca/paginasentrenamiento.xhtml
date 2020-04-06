@@ -7,7 +7,125 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <div class="row">
+                <h1><i class="fa fa-fw fa-trophy"></i>Páginas y sistemas de entrenamiento en linea</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.entrenamiento.páginas.text']}"/>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <p:panelGrid style="margin-top:20px">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="1" >Nombre</p:column>
+                            <p:column colspan="1">Descripción</p:column>
+                            <p:column colspan="1">Sitio WEB</p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.primera.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.primera.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.primera.sitio']}" href="http://www.codechef.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.segundo.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.segundo.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.segundo.sitio']}" href="http://codecup.nl/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.tercero.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.tercero.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.tercero.sitio']}" href="http://codeforces.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.cuarto.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.cuarto.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.cuarto.sitio']}" href="http://www.codingame.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.quinto.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.quinto.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.quinto.sitio']}" href="http://www.hackerearth.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.sexto.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.sexto.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.sexto.sitio']}" href="http://hackerrank.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.septimo.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.septimo.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.septimo.sitio']}" href="http://projecteuler.net/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.octavo.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.octavo.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.octavo.sitio']}" href="http://www.topcoder.com/"/></p:column>
+                    </p:row>  
+                    <p:row>
+                        <p:column >#{msg['artemis.entrenamieto.noveno.nombre']}</p:column>
+                        <p:column >#{msg['artemis.entrenamieto.noveno.descripcion']}</p:column>
+                        <p:column ><p:link value="#{msg['artemis.entrenamieto.noveno.sitio']}" href="http://www.onlinejudge.org/"/></p:column>
+                    </p:row>  
+                </p:panelGrid>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="col-lg-12">
+                <h2>Paginas de entrenamiento existentes</h2>
+                <p:panelGrid columns="3" layout="grid" style="text-align: center">
+                    <p:link value="POJ" href="http://poj.org/" style="color: blue"/> 
+                    <p:link value="ZOJ" href="http://acm.zju.edu.cn/onlinejudge/" style="color: blue"/>
+                    <p:link value="UVALive" href="http://livearchive.onlinejudge.org/index.php" style="color: blue"/>
+
+                    <p:link value="SGU" href="http://acm.sgu.ru/" style="color: blue"/>
+                    <p:link value="URAL" href="http://acm.timus.ru/" style="color: blue"/>
+                    <p:link value="HUST" href="http://acm.hust.edu.cn/" style="color: blue"/>
+
+                    <p:link value="SPOJ" href="http://www.spoj.com/" style="color: blue"/>
+                    <p:link value="HDU" href="http://acm.hdu.edu.cn/" style="color: blue"/>
+                    <p:link value="HYSBZ" href="http://www.lydsy.com/JudgeOnline/" style="color: blue"/>
+                    
+                    <p:link value="UVA" href="https://onlinejudge.org/" style="color: blue"/>
+                    <p:link value="CodeForces" href="http://codeforces.com/" style="color: blue"/>
+                    <p:link value="Z-Trening" href="http://www.codah.club/" style="color: blue"/>
+                    
+                    <p:link value="Aizu" href="http://judge.u-aizu.ac.jp/" style="color: blue"/>
+                    <p:link value="LightOJ" href="http://lightoj.com/" style="color: blue"/>
+                    <p:link value="UESTC" href="http://acm.uestc.edu.cn/" style="color: blue"/>
+                    
+                    <p:link value="NBUT" href="https://ac.2333.moe/" style="color: blue"/>
+                    <p:link value="FZU" href="http://acm.fzu.edu.cn/" style="color: blue"/>
+                    <p:link value="CSU" href="http://acm.csu.edu.cn/OnlineJudge/" style="color: blue"/>
+                    
+                    <p:link value="SCU" href="http://cstest.scu.edu.cn/" style="color: blue"/>
+                    <p:link value="ACdream" href="http://acdream.info/" style="color: blue"/>
+                    <p:link value="CodeChef" href="http://www.codechef.com/" style="color: blue"/>
+                    
+                    <p:link value="CF::Gym" href="http://codeforces.com/gyms/" style="color: blue"/>
+                    <p:link value="OpenJudge" href="http://openjudge.cn/" style="color: blue"/>
+                    <p:link value="Kattis" href="https://open.kattis.com/" style="color: blue"/>
+                    
+                    <p:link value="HihoCoder" href="https://hihocoder.com/" style="color: blue"/>
+                    <p:link value="HIT" href="http://acm.hit.edu.cn/hoj/" style="color: blue"/>
+                    <p:link value="HRBUST" href="http://acm.hrbust.edu.cn/" style="color: blue"/>
+                    
+                    <p:link value="EIJudge" href="http://acm.mipt.ru/judge/" style="color: blue"/>
+                    <p:link value="AtCoder" href="https://atcoder.jp/" style="color: blue"/>
+                    <p:link value="HackerRank" href="https://www.hackerrank.com/" style="color: blue"/>
+                    
+                    <p:link value="51Nod" href="http://acm.mipt.ru/judge/" style="color: blue"/>
+                    <p:link value="TopCoder" href="https://arena.topcoder.com/" style="color: blue"/>
+                    <p:link value="E-Olymp" href="https://www.e-olymp.com/en/" style="color: blue"/>
+
+                </p:panelGrid>
+
+
+            </div>
+
         </div>
     </ui:define>  
 </ui:composition>
