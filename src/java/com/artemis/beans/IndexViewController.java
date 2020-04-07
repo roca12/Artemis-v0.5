@@ -22,6 +22,7 @@ public class IndexViewController {
         }
 
     }
+    
 
     public String links() {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
