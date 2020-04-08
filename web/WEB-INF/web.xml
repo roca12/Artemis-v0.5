@@ -17,7 +17,10 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>    
-
+    <context-param>
+        <param-name>FIXED_LOCAL_TIMEZONE</param-name>
+        <param-value>GMT-05:00</param-value>
+    </context-param>
  
     <!-- Welcome page -->
     <welcome-file-list>
