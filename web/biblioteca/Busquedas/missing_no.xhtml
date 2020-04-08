@@ -4,10 +4,42 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
+                template="/templates/default/main.xhtml">
+    <!--Se llama al template -->
     <ui:define name="content">
+        <!--Divisor con animación -->
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <!-- Titulo de clase h1 con icono asociado-->
+            <div class="row">
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Busqueda del numero perdido</h1>
+            </div>
+            <!-- Texto del tema-->
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="Se le da una lista de n-1 enteros y estos enteros están en el rango de 1 a n. No hay duplicados
+en la lista. Falta uno de los enteros en la lista." style="text-align: justify"/>
+                </div>
+                <p:spacer/>
+                <div class="row">
+                    <p:outputLabel value="1) XOR todos los elementos del array, que el resultado de XOR sea X1." style="text-align: justify"/>
+                </div>
+                <p:spacer/>
+                <div class="row">
+                    <p:outputLabel value="2) XOR todos los números del 1 al n, sea XOR sea X2." style="text-align: justify"/>
+                </div>
+                <p:spacer/>
+                <div class="row">
+                    <p:outputLabel value="3) XOR de X1 y X2 da el número que falta." style="text-align: justify"/>
+                </div>
+                <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
+                    <h3>Java</h3>
+                    <!-- codemirror java-->
+                    <pe:codeMirror id="codeMirror" 
+                                   value="#{codemirror.missingnosearch}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
+            </div>
         </div>
     </ui:define>  
 </ui:composition>
