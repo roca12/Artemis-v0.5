@@ -15,10 +15,9 @@
                 <p:growl id="messages" showDetail="true" />
 
                 <h:panelGrid columnClasses="value">
-                    <p:schedule value="#{calendarioViewController.lazyEventModel}" />
+                    <p:schedule value="#{calendarioViewController.lazyEventModel}" timeZone="America/Bogota" clientTimeZone="America/Bogota"/>
                 </h:panelGrid>
             </h:form>
-
         </div>
     </ui:define>  
 </ui:composition>
