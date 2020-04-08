@@ -4,10 +4,37 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml"
+                xmlns:pe="http://primefaces.org/ui/extensions">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
+            <div class="row">
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Expresiones regulares</h1>
+            </div>
+            <!-- Texto del tema-->
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregulares.text']}" style="text-align: justify"/>
+                    <h4 style="color: blue"><p:outputLabel value="Lógicos: " style="text-align: justify"/></h4>
+                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesa.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesb.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesc.text']}" style="text-align: justify"/><br/>
+                    <h4 style="color: blue"><p:outputLabel value="Intervalos de caracteres: " style="text-align: justify"/></h4>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesd.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularese.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesf.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesg.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesh.text']}" style="text-align: justify"/><br/>
+                    <h4 style="color: blue"><p:outputLabel value="Intervalos de caracteres predefinidos " style="text-align: justify"/></h4>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesi.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesj.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesk.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesl.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregularesm.text']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.expresionesregulareso.text']}" style="text-align: justify"/><br/>
+                </div>
+            </div>
             
-        </div>
+        </div>   
     </ui:define>  
 </ui:composition>
