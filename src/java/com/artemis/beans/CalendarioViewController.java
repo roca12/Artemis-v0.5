@@ -36,8 +36,8 @@ public class CalendarioViewController implements Serializable {
     private String slotDuration = "00:30:00";
     private String slotLabelInterval;
     private String scrollTime = "06:00:00";
-    private String minTime = "04:00:00";
-    private String maxTime = "20:00:00";
+    private String minTime = "00:00:00";
+    private String maxTime = "00:00:00";
     private String locale = "en";
     private String timeZone = "America/Bogota";
     private String clientTimeZone = "America/Bogota";
