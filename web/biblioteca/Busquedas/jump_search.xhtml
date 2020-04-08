@@ -4,10 +4,44 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
+                template="/templates/default/main.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
             
+            <!-- Titulo de clase h1 con icono asociado-->
+            <div class="row">
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Busqueda por saltos</h1>
+            </div>
+            <!-- Texto del tema-->
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.text']}" style="text-align: justify"/><br/>
+                    <h4 style="color: red"><p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.texta']}" style="text-align: justify"/></h4>
+                    <div class="col-lg-12">
+                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.textb']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.textc']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.textd']}" style="text-align: justify"/><br/>
+                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.saltos.textc']}" style="text-align: justify"/><br/>
+                    </div>
+                </div>
+                <!-- Ejemplo con imagen e icono-->
+                <div class="row">
+                    <h2><i class="fa fa-fw fa-check"/>Ilustracion de busqueda por saltos</h2>
+                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/busquedaporsaltos.jpg" width="600" height="400"/>
+                </div>
+                <!-- Form de codigos-->
+                <h:form>
+                    <!-- titulo codigo de ejemplo con su icono respectivo-->
+                    <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
+                    <h3>Java</h3>
+                    <!-- codemirror java-->
+                    <pe:codeMirror id="codeMirror1" 
+                                   value="#{codemirror.jumpsearch}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
+                </h:form>
+            </div>
         </div>
     </ui:define>  
 </ui:composition>
