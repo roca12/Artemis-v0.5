@@ -4,10 +4,108 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:showcase="http://primefaces.org/ui/extensions/showcase">
+
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <div class="row">
+                <h2 style="color: red"><i class="fa fa-fw fa-angle-double-right"></i> Estructuras en JAVA,C++ y PYTHON</h2>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.descripcion.text']}" style="text-align: justify"/>
+                </div>
+            </div>          
+            <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Vector tamaño fijo (Array)</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.vector.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+            <div class="row">
+                <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/Vector_GuiaDelProgramadorCompetitivo.JPG" width="600" height="400"/>
+            </div>
+             <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Vector tamaño dinámico (ArrayList)</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.vectordinamico.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+            <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Vector sin repetición (set)</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.vectorsinrepetir.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+            <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Matriz (Matrix) </h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.matriz.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+            <div class="row">
+                <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/Matriz_GuiaDelProgramadorCompetitivo.JPG" width="600" height="400"/>
+            </div>
+            <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Diccionario o mapa (HashMap) </h3>
+            </div>
+             <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.diccionario.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+              <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Pila (Stack) </h3>
+              </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.pila.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+            <div class="row">
+                <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/Pila_GuiaDelProgramadorCompetitivo.JPG" width="600" height="400"/>
+            </div>
+             <div class ="row">
+                <h3 style="color:red"><i class="fa fa-fw fa-angle-double-right"></i> Cola (Queue) </h3>
+              </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.estructuras.cola.text']}" style="text-align: justify"/>
+                </div>
+            </div>
+             <div class="row">
+                <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/Cola_GuiaDelProgramadorCompetitivo.JPG" width="600" height="400"/>
+            </div>
+            <h:form>
+                    <!-- titulo codigo de ejemplo con su icono respectivo-->
+                    <h2><i class="fa fa-fw fa-check"/>Ejemplos</h2>
+                    <h3>Java</h3>
+                    <!-- codemirror java-->
+                    <pe:codeMirror id="codeMirror1" 
+                                   value="#{codemirror.estructurasjava}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
+                    <h3>Python</h3>
+                    <!-- codemirror py-->
+                    <pe:codeMirror id="codeMirror2" 
+                                   value="#{codemirror.estructuraspy}" lineNumbers="true" mode="text/x-python"  readonly="true"/>
+                    <h3>C++</h3>
+                    <!-- codemirror cpp-->
+                    <pe:codeMirror id="codeMirror3" 
+                                   value="#{codemirror.estructurascpp}" lineNumbers="true" mode="text/x-c++src"  readonly="true"/>
+            </h:form>
+
+
+
+
         </div>
     </ui:define>  
 </ui:composition>
