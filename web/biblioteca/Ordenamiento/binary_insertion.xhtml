@@ -4,10 +4,42 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
+                template="/templates/default/main.xhtml">
+    <!--Se llama al template -->
     <ui:define name="content">
+        <!--Divisor con animación -->
         <div class="ui-fluid animated bounceInLeft" >
-            
+            <!-- Titulo de clase h1 con icono asociado-->
+            <div class="row">
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Ordenamiento de inserción binaria</h1>
+            </div>
+            <!-- Texto del tema-->
+            <div class="col-lg-12">
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.biblioteca.ordenamientos.binaryinsertion.texta']}" style="text-align: justify"/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.biblioteca.ordenamientos.binaryinsertion.textb']}" style="text-align: justify"/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row">
+                    <p:outputLabel value="#{msg['artemis.biblioteca.ordenamientos.binaryinsertion.textc']}" style="text-align: justify"/>
+                    <br/>
+                    <br/>
+                </div>
+
+                <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
+                <h3>Java</h3>
+                <!-- codemirror java-->
+                <pe:codeMirror id="codeMirror" 
+                               value="#{codemirror.binaryinsertionsort}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
+            </div>
         </div>
     </ui:define>  
 </ui:composition>

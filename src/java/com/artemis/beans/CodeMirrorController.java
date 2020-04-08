@@ -9596,6 +9596,83 @@ public class CodeMirrorController implements Serializable {
             + "    }\n"
             + "}";
 
+    private String cicloscpp = "#include<bits/stdc++.h>\n"
+            + "#include<cstdlib>\n"
+            + "using namespace std;\n"
+            + "\n"
+            + "int main (int argc, char *argv[]) {\n"
+            + "	\n"
+            + "	int número;\n"
+            + "	cin>>número;\n"
+            + "	//Estructura de un condicional\n"
+            + "	//Dentro el parentesis va la condicion a revisar\n"
+            + "	//Si se cumple se realiza las siguientes lineas\n"
+            + "	//En caso contrario pasa al else \n"
+            + "	//y se realiza las lineas siguientes del else\n"
+            + "	if (número % 2 == 0) {\n"
+            + "		cout<<\"Es par\"<<endl;\n"
+            + "	} else {\n"
+            + "		cout<<\"Es impar\"<<endl;\n"
+            + "	}\n"
+            + "	cout<<endl;\n"
+            + "	cout<<\"Ciclo for \"<<endl;\n"
+            + "	// variable iteradora, condicion , acumulador\n"
+            + "	for (int i = 0; i < 10; i++) {\n"
+            + "		cout<<i<<endl;\n"
+            + "	}\n"
+            + "	cout<<\"Ciclo while\"<<endl;\n"
+            + "	//Variable, condicion, al final acumulador\n"
+            + "	int acumulador = 0;\n"
+            + "	while (acumulador < 10) {\n"
+            + "		cout<<acumulador<<endl;;\n"
+            + "		acumulador++;\n"
+            + "		\n"
+            + "	}\n"
+            + "	cout<<\"Ciclo do while\"<<endl;\n"
+            + "	//Haga hasta que una condición se cumpla\n"
+            + "	acumulador = 0;\n"
+            + "	do {\n"
+            + "		cout<<acumulador<<endl;\n"
+            + "		acumulador++;\n"
+            + "	} while (acumulador < 10);\n"
+            + "	cout<<\"Ciclo for each\"<<endl;\n"
+            + "	//Iterar entre todos los elementos que tenga una estructura\n"
+            + "	//Sin importar el tamaño \n"
+            + "	int números[] = {1,2,3,4,5,6,7,8,9,0};\n"
+            + "	for (int o : números) {\n"
+            + "		cout<<o<<endl;\n"
+            + "	}\n"
+            + "	return 0;\n"
+            + "}	";
+    private String ciclospy = "numero=0;\n"
+            + "numero =int(input())\n"
+            + "#Estructura de un condicional\n"
+            + "#Dentro el parentesis va la condicion a revisar\n"
+            + "#Si se cumple se realiza las siguientes lineas\n"
+            + "#En caso contrario pasa al else \n"
+            + "#y se realiza las lineas siguientes del else\n"
+            + "if (numero % 2 == 0):\n"
+            + "    print(\"Es par\")\n"
+            + "else: \n"
+            + "    print(\"Es impar\")\n"
+            + "print(\"Ciclo for \")\n"
+            + "#variable iteradora, rango inicio,final\n"
+            + "for i in range (0,10):\n"
+            + "    print(i)\n"
+            + "print(\"Ciclo while\")\n"
+            + "#Variable, condicion, al final acumulador\n"
+            + "acumulador = 0;\n"
+            + "while (acumulador < 10):\n"
+            + "    print(acumulador)\n"
+            + "    acumulador=acumulador+1;\n"
+            + "print(\"Ciclo for each\")\n"
+            + "#Iterar entre todos los elementos que tenga una estructura\n"
+            + "#Sin importar el tamaño \n"
+            + "numeros =[1,2,3,4,5,6,7,8,9,0]\n"
+            + "for o in numeros:\n"
+            + "    print(o)\n"
+            + "";
+
     public String getCiclosjava() {
         return ciclosjava;
     }
@@ -11042,6 +11119,22 @@ public class CodeMirrorController implements Serializable {
 
     public void setPascaltriangle(String pascaltriangle) {
         this.pascaltriangle = pascaltriangle;
+    }
+
+    public String getCicloscpp() {
+        return cicloscpp;
+    }
+
+    public void setCicloscpp(String cicloscpp) {
+        this.cicloscpp = cicloscpp;
+    }
+
+    public String getCiclospy() {
+        return ciclospy;
+    }
+
+    public void setCiclospy(String ciclospy) {
+        this.ciclospy = ciclospy;
     }
     
 
