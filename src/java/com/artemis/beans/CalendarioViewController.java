@@ -1,14 +1,22 @@
 package com.artemis.beans;
 
+import com.artemis.entities.Evento;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -23,15 +31,11 @@ import org.primefaces.model.ScheduleModel;
 public class CalendarioViewController implements Serializable {
 
     private ScheduleModel eventModel;
-
     private ScheduleModel lazyEventModel;
-
     private ScheduleEvent event = new DefaultScheduleEvent();
-
     private boolean showWeekends = true;
     private boolean tooltip = true;
     private boolean allDaySlot = true;
-
     private String timeFormat;
     private String slotDuration = "00:30:00";
     private String slotLabelInterval;
@@ -51,7 +55,27 @@ public class CalendarioViewController implements Serializable {
 
             @Override
             public void loadEvents(LocalDateTime start, LocalDateTime end) {
-
+                final String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+                final EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
+                Query queryObj = entityMgrObj.createQuery("SELECT e FROM Evento e");
+                List<Evento> list = queryObj.getResultList();
+                list.stream()
+                        .map((e) -> {
+                            LocalDateTime inicio = ToLocalDateTime(e.getFechainicio());
+                            LocalDateTime fin = ToLocalDateTime(e.getFechafinal());
+                            DefaultScheduleEvent event = DefaultScheduleEvent.builder()
+                                    .title(e.getTitulo())
+                                    .startDate(inicio)
+                                    .endDate(fin)
+                                    .description(e.getDescripcion())
+                                    .build();
+                            return event;
+                        }
+                        ).forEachOrdered(
+                                (event) -> {
+                                    addEvent(event);
+                                }
+                        );
                 LocalDateTime inicio = LocalDateTime.of(2020, Month.APRIL, 3, 18, 00);
                 LocalDateTime fin = LocalDateTime.of(2020, Month.APRIL, 4, 23, 00);
                 DefaultScheduleEvent event = DefaultScheduleEvent.builder()
@@ -60,10 +84,21 @@ public class CalendarioViewController implements Serializable {
                         .endDate(fin)
                         .description("Team A vs. Team B")
                         .build();
+
                 addEvent(event);
 
             }
         };
+    }
+
+    public LocalDateTime ToLocalDateTime(java.util.Date dateToConvert) {
+        return Instant.ofEpochMilli(dateToConvert.getTime())
+                .atZone(ZoneId.of("UTC"))
+                .toLocalDateTime();
+    }
+
+    public static Date toDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.of("UTC")).toInstant());
     }
 
     public ScheduleModel getEventModel() {
