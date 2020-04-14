@@ -7,15 +7,22 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-institution"/> Sistema ARTEMIS</a>
+                <a class="navbar-brand" style="color: whitesmoke"><i class="fa fa-fw fa-chevron-right"/> Bienvenido #{login.user eq null?usuario:login.user}</a>   
+
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-home" style="color: whitesmoke"/> Inicio</a></li>
                     <li><a href="#{indexViewController.links()}calendario.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-calendar " style="color: whitesmoke"/> Calendario</a></li>
                     <li><a href="#{indexViewController.links()}ayuda.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-info-circle" style="color: whitesmoke"/> Ayuda</a></li>
-                    <li><a href="#{indexViewController.links()}login.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-arrow-right" style="color: whitesmoke"/> Iniciar Sesión</a></li>
+                    <ui:fragment rendered="#{login.user eq null}">
+                        <li><a href="#{indexViewController.links()}login.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-arrow-right" style="color: whitesmoke"/> Iniciar Sesión</a></li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{login.user ne null}">
+                        <li><h:form><p:commandButton value="Cerrar sesión" update="@form" style="height: 50px" action="#{login.logout()}"></p:commandButton></h:form></li>
+                    </ui:fragment>
                 </ul>
-
             </div>
         </div>
     </div>

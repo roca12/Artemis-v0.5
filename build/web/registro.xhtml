@@ -4,10 +4,140 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/mainindex.xhtml">
     <ui:define name="content">
-        <div class="ui-fluid animated bounceInLeft" >
-            
-        </div>
-    </ui:define>  
+        <ui:fragment rendered="#{login.nivel eq 5}">
+            <div class="ui-fluid animated bounceInLeft" >
+                <div class="col-lg-12">
+                    <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Esta cuenta ya se encuentra registrada</h1>
+                </div>
+            </div>
+        </ui:fragment>
+        <ui:fragment rendered="#{((login.nivel eq 0)or(login.nivel ne 5))}">
+            <div class="ui-fluid animated bounceInLeft" >
+                <div class="col-lg-12">
+                    <h1 style="color: red">Registro en sistema</h1>
+                    <p:separator/>
+                    <h2 style="color: red"><i class="fa fa-fw fa-info-circle"></i>Información general</h2>
+                    <h:form  id="registroform">
+
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Primer nombre:" for="primernombre"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="ui-float-label">
+                                    <p:inputText id="primernombre" value="#{registroViewController.primernombre}" required="true"></p:inputText>
+                                    <p:outputLabel for="@previous" value="Primer nombre" />
+                                </span>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Segundo nombre:" for="segundonombre"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="ui-float-label">
+                                    <p:inputText id="segundonombre" value="#{registroViewController.segundonombre}"></p:inputText>
+                                    <p:outputLabel for="@previous" value="Segundo nombre" />
+                                </span>
+                            </div>
+                        </div>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Primer apellido:" for="primerapellido"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="ui-float-label">
+                                    <p:inputText id="primerapellido" value="#{registroViewController.primerapellido}" required="true"></p:inputText>
+                                    <p:outputLabel for="@previous" value="Primer apellido" />
+                                </span>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Segundo apellido:" for="segundoapellido"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="ui-float-label">
+                                    <p:inputText id="segundoapellido" value="#{registroViewController.segundoapellido}"></p:inputText>
+                                    <p:outputLabel for="@previous" value="Segundo apellido" />
+                                </span>
+                            </div>
+                        </div>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel  value="Correo electronico:" for="correo"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="ui-float-label">
+                                    <p:inputText id="correo" value="#{registroViewController.correo}" required="true" requiredMessage="Inserte su correo electronico"
+                                                 validatorMessage="Formato de correo electronico invalido">
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </p:inputText>
+                                    <p:message for="correo" />
+
+                                </span>
+                            </div>
+                        </div>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Nombre de usuario:" for="usuario"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-4">
+                                <p:inputText    autocomplete="off" id="usuario" value="#{registroViewController.username}" required="true"> <f:validateLength minimum="8" /></p:inputText>
+                            </div>
+                        </div>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Contraseña:" for="password"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-4">
+                                <p:password autocomplete="new-password" id="password"   match="passconf" value="#{registroViewController.password}" required="true" feedback="true"
+                                            promptLabel="Nivel nulo" weakLabel="Debil"
+                                            goodLabel="Moderado" strongLabel="Fuerte" validatorMessage="La contraseña debe tener al menos 8 caracteres y coincidir con la confirmación"> <f:validateLength minimum="8" /></p:password>
+                            </div>
+                        </div>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Confirmar contraseña:" for="passconf"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-4">
+                                <p:password autocomplete="new-password" id="passconf" value="#{registroViewController.password2}" required="true" feedback="true"
+                                            promptLabel="Nivel nulo" weakLabel="Debil"
+                                            goodLabel="Moderado" strongLabel="Fuerte"> </p:password>
+                            </div>
+                        </div>
+                        <p:growl id="growl" life="2000" />
+                        <div class="row"  style="text-align: center ;display: flex;
+                             justify-content: center;">
+                            <div class="col-lg-2" >
+                                <p:commandButton update="growl,@form" value="Crear cuenta" icon="fa fa-fw fa-chevron-right"  action="#{registroViewController.crearCuenta()}" ></p:commandButton>
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+                    <p:spacer/>
+                    <p:spacer/>
+                    <p:spacer/>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p:outputLabel value="Todos los valores con * son obligatorios" ></p:outputLabel>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </ui:fragment>
+    </ui:define> 
 </ui:composition>

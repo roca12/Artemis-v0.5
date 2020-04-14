@@ -1,14 +1,22 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
-
-    <h5><i class="fa fa-fw fa-info"/> Información general</h5>
+    <ui:fragment rendered="#{login.nivel eq 0}">
+        <h5><i class="fa fa-fw fa-globe"/> Administración</h5>
         <ul class="nav nav-sidebar" >
-            <li class="activnav nav-sidebae"><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
-            <li><a href="#{indexViewController.links()}informacion/pcompetitiva.xhtml">Programación competitiva</a></li>
-            <li><a href="#{indexViewController.links()}informacion/competencias.xhtml">Competencias existentes</a></li>
-            <li><a href="#{indexViewController.links()}informacion/lenguajes.xhtml">Lenguajes de programación</a></li>
+            <li><a href="">Eventos</a></li>
+            <li><a href="">Usuarios</a></li>
+            <li><a href="">Ayuda</a></li>
         </ul>
+    </ui:fragment>
+    <h5><i class="fa fa-fw fa-info"/> Información general</h5>
+    <ul class="nav nav-sidebar" >
+        <li class="activnav nav-sidebae"><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
+        <li><a href="#{indexViewController.links()}informacion/pcompetitiva.xhtml">Programación competitiva</a></li>
+        <li><a href="#{indexViewController.links()}informacion/competencias.xhtml">Competencias existentes</a></li>
+        <li><a href="#{indexViewController.links()}informacion/lenguajes.xhtml">Lenguajes de programación</a></li>
+    </ul>
+    <ui:fragment rendered="#{(login.nivel eq 5) or (login.nivel eq 0) }">
         <h5><i class="fa fa-fw fa-book"/> Biblioteca</h5>
         <ul class="nav nav-sidebar">
             <li><a href="#{indexViewController.links()}biblioteca.xhtml">Temario</a></li>
@@ -21,6 +29,9 @@
             <li><a href="https://www.codechef.com/">CodeChef</a></li>
             <li><a href="https://codeforces.com/">CodeForces</a></li>
             <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM</a></li>
-        </ul>    
+        </ul> 
+    </ui:fragment> 
+
+
 </ui:composition>
 
