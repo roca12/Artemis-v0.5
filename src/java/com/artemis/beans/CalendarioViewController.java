@@ -26,7 +26,7 @@ import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
-@ManagedBean(name = "calendarioViewController")
+    @ManagedBean(name = "calendarioViewController")
 @ViewScoped
 public class CalendarioViewController implements Serializable {
 

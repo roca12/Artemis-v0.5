@@ -5,38 +5,44 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
-    <h:head>
-        <f:facet name="first">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-            <title>Artemis</title>
-        </f:facet>
-
-        <f:facet name="middle">
-            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
-            <h:outputStylesheet name="css/dashboard.css" />
-            <h:outputStylesheet name="bootstrap/css/animate.css"/>
-            <h:outputStylesheet name="bootstrap/css/switchery.css"/>
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
-            <h:outputScript name="bootstrap/js/bootstrap.js" />
-            <f:loadBundle basename="bundle.textos" var="msg"/>
-        </f:facet>
-
-        <f:facet name="last">
-            <h:outputStylesheet name="css/font-awesome.css" />
-        </f:facet>
-
-    </h:head>
-
-    <h:body>
-        <ui:include src="header.xhtml" />
-        <ui:include src="content.xhtml" />
-        
-    </h:body>
     
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+                <title>Artemis</title>
+            </f:facet>
+
+            <f:facet name="middle">
+                <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+                <h:outputStylesheet name="css/dashboard.css" />
+                <h:outputStylesheet name="bootstrap/css/animate.css"/>
+                <h:outputStylesheet name="bootstrap/css/switchery.css"/>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+                <h:outputScript name="bootstrap/js/bootstrap.js" />
+                <f:loadBundle basename="bundle.textos" var="msg"/>
+            </f:facet>
+
+            <f:facet name="last">
+                <h:outputStylesheet name="css/font-awesome.css" />
+            </f:facet>
+
+        </h:head>
+    <ui:fragment rendered="#{(login.nivel eq 0) or (login.nivel eq 5) }">
+        <h:body>
+            <ui:include src="header.xhtml" />
+            <ui:include src="content.xhtml" />
+
+        </h:body>
+
+    </ui:fragment>
+    <ui:fragment rendered="#{login.nivel eq 99}">
+        <h:body>
+            <ui:include src="contentnologin.xhtml" />
+        </h:body>
+
+    </ui:fragment>
 </html>
