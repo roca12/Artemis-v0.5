@@ -38,19 +38,15 @@
                     <div class="row">
                         <div class="col-lg-8" >
                             <div class="col-lg-6" >
-                                <p:galleria value="#{indexViewController.images}" var="image" panelWidth="700" panelHeight="500" showCaption="true">
+                                
+                                <p:galleria value="#{indexViewController.images}" var="image"   transitionInterval="10000" effect="slide" effectSpeed="1000" panelWidth="700" panelHeight="500" >
                                     <p:graphicImage value="/resources/imagenes/#{image}" 
-                                                    alt="Google Games, Maratones internas y Competencias clasificatorias nacionales" 
-                                                    title="Universidad ECCI en diferentes competencias"
                                                     name="imagenes/#{image}" height="500" width="700"/>  
                                 </p:galleria>
                             </div> 
                         </div>
                     </div>
                 </h:form>
-                <!--
-                <p:link value="Guia del programador" href="#{indexViewController.links()}biblioteca/guiapc.xhtml"/>
-                -->
             </div>
             
         </div>

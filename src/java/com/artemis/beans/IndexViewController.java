@@ -1,11 +1,9 @@
 package com.artemis.beans;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,7 +15,7 @@ public class IndexViewController {
     @PostConstruct
     public void init() {
         images = new ArrayList<>();
-        for (int i = 1; i <= 102; i++) {
+        for (int i = 1; i <= 16; i++) {
             images.add("GPC (" + i + ").jpg");
         }
 
