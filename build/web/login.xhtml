@@ -7,17 +7,21 @@
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/mainindex.xhtml">
     <ui:define name="content">
         <div class="ui-fluid animated bounceInLeft" >
+            <!--tittles-->
             <h1>Sistema ARTEMIS</h1>
             <h2> Programación competitiva para todos </h2>
+            <!--define <br> <p:spacer/>-->
             <p:spacer/>
             <p:spacer/>
             <p:spacer/>
             <h:form >
+                <!--box's form-->
                 <div class="row">
                     <div class="col-lg-2">
                         <p:outputLabel value="Nombre de usuario:" for="usuario"></p:outputLabel>
                     </div>
                     <div class="col-lg-4">
+                        <!--autocomplete box browser-->
                         <p:inputText    autocomplete="off" id="usuario" value="#{login.user}" required="true" requiredMessage="El usuario es requerido"></p:inputText>
                     </div>
                 </div>
@@ -31,6 +35,7 @@
                     </div>
                 </div>
                 <p:spacer/>
+                <!--button validate information-->
                 <div class="row">                    
                     <div class="col-lg-12" >
                         <div class="col-lg-4">
@@ -40,9 +45,11 @@
                     </div>
                 </div>
                 <p:spacer/>
+                
                 <div class="row">                    
                     <div class="col-lg-12" >
                         <div class="col-lg-4">
+                            <!--Create account-->
                             ¿No tienes una cuenta?  <a href="#{indexViewController.links()}registro.xhtml" >Registrarme</a>
                         </div>
                     </div>
