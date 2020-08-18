@@ -74,7 +74,7 @@ public class Cuenta implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "rango")
-    private int rango;
+    private Integer rango;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -154,13 +154,15 @@ public class Cuenta implements Serializable {
         this.pass = pass;
     }
 
-    public int getRango() {
+    public Integer getRango() {
         return rango;
     }
 
-    public void setRango(int rango) {
+    public void setRango(Integer rango) {
         this.rango = rango;
     }
+
+    
 
     public String getCorreo() {
         return correo;

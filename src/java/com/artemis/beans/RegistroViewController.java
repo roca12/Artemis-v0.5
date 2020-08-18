@@ -14,10 +14,6 @@ import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.FlushModeType;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 @ManagedBean(name = "registroViewController")
 @ConversationScoped
@@ -31,7 +27,7 @@ public class RegistroViewController implements Serializable {
     private String username;
     private String password;
     private String password2;
-
+    private String rango;
     public void crearCuenta() throws SQLException, IOException {
         FacesMessage message = new FacesMessage();
 
@@ -80,6 +76,57 @@ public class RegistroViewController implements Serializable {
             password2 = null;
         }
     }
+
+    public void crearCuenta2() throws SQLException, IOException {
+        FacesMessage message = new FacesMessage();
+        Connection c = null;
+        String URL = "jdbc:mysql://localhost:3306/Artemis?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String USER = "root";
+        String PASSWORD = "piroloco2112";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Controlador detectado");
+            System.out.println("Conectando...");
+            c = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Conexión exitosa");
+            PreparedStatement ps = null;
+            if (c != null) {
+                String sql = "insert into cuentas values (null,?,?,?,?,?,?,?,?);";
+                ps = c.prepareStatement(sql);
+                ps.setString(1, primernombre);
+                ps.setString(2, segundonombre);
+                ps.setString(3, primerapellido);
+                ps.setString(4, segundoapellido);
+                ps.setString(5, username);
+                ps.setString(6, password);
+                ps.setString(7, rango);
+                ps.setString(8, correo);
+                ps.execute();
+                System.out.println("Admin crear --> Data Added Successfully");
+            }
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, evalAsString("#{msg['artemis.registro.creado']}"), "");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Conexión fallida ");
+            e.printStackTrace();
+            message = new FacesMessage(FacesMessage.SEVERITY_FATAL, evalAsString("#{msg['artemis.registro.error']}"), "");
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            primernombre = null;
+            primerapellido = null;
+            segundonombre = null;
+            segundoapellido = null;
+            correo = null;
+            username = null;
+            password = null;
+            password2 = null;
+        }
+    }
+
+  
 
     public String evalAsString(String p_expression) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -155,4 +202,11 @@ public class RegistroViewController implements Serializable {
         this.password2 = password2;
     }
 
+    public String getRango() {
+        return rango;
+    }
+
+    public void setRango(String rango) {
+        this.rango = rango;
+    }
 }

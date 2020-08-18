@@ -4,14 +4,14 @@
     <ui:fragment rendered="#{login.nivel eq 0}">
         <h5><i class="fa fa-fw fa-globe"/> Administración</h5>
         <ul class="nav nav-sidebar" >
-            <li><a href="">Eventos</a></li>
-            <li><a href="">Usuarios</a></li>
-            <li><a href="">Ayuda</a></li>
+            <li><a href="#{indexViewController.links()}admin/calendarioconf.xhtml">Configurar eventos</a></li>
+            <li><a href="#{indexViewController.links()}admin/usersadmin.xhtml">Administrar Usuarios</a></li>
+            <li><a href="#{indexViewController.links()}admin/ayudaconf.xhtml">Configurar Ayuda</a></li>
         </ul>
     </ui:fragment>
     <h5><i class="fa fa-fw fa-info"/> Información general</h5>
     <ul class="nav nav-sidebar" >
-        <li class="activnav nav-sidebae"><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
+        <li><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
         <li><a href="#{indexViewController.links()}informacion/pcompetitiva.xhtml">Programación competitiva</a></li>
         <li><a href="#{indexViewController.links()}informacion/competencias.xhtml">Competencias existentes</a></li>
         <li><a href="#{indexViewController.links()}informacion/lenguajes.xhtml">Lenguajes de programación</a></li>
@@ -25,10 +25,10 @@
         </ul>
         <h5><i class="fa fa-fw fa-globe"/> Paginas relacionadas</h5>
         <ul class="nav nav-sidebar">
-            <li><a href="https://onlinejudge.org/">Online Judge</a></li>
-            <li><a href="https://www.codechef.com/">CodeChef</a></li>
-            <li><a href="https://codeforces.com/">CodeForces</a></li>
-            <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM</a></li>
+            <li><a href="https://onlinejudge.org/">Online Judge®</a></li>
+            <li><a href="https://www.codechef.com/">CodeChef®</a></li>
+            <li><a href="https://codeforces.com/">CodeForces®</a></li>
+            <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM®</a></li>
         </ul> 
     </ui:fragment> 
 

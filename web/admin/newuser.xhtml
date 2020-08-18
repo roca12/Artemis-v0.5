@@ -3,16 +3,9 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/mainindex.xhtml">
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
-        <ui:fragment rendered="#{login.nivel eq 5}">
-            <div class="ui-fluid animated bounceInLeft" >
-                <div class="col-lg-12">
-                    <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Esta cuenta ya se encuentra registrada</h1>
-                </div>
-            </div>
-        </ui:fragment>
-        <ui:fragment rendered="#{((login.nivel eq 0)or(login.nivel ne 5))}">
+        <ui:fragment rendered="#{((login.nivel eq 0))}">
             <div class="ui-fluid animated bounceInLeft" >
                 <div class="col-lg-12">
                     <h1 style="color: red">Registro en sistema</h1>
@@ -112,11 +105,23 @@
                                             goodLabel="Moderado" strongLabel="Fuerte"> </p:password>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p:outputLabel value="Nivel de permisos:" for="passconf"></p:outputLabel>
+                            </div>
+                            <div class="col-lg-4">
+
+                                <p:selectOneRadio id="rango" value="#{registroViewController.rango}" layout="responsive" columns="3" >
+                                    <f:selectItem  itemLabel="Admin" itemValue="0"/>
+                                    <f:selectItem   itemLabel="Estudiante" itemValue="5"/>
+                                </p:selectOneRadio>
+                            </div>
+                        </div>
                         <p:growl id="growl" life="6000" />
                         <div class="row"  style="text-align: center ;display: flex;
                              justify-content: center;">
                             <div class="col-lg-2" >
-                                <p:commandButton update="growl,@form" value="Crear cuenta" icon="fa fa-fw fa-chevron-right"  action="#{registroViewController.crearCuenta()}" ></p:commandButton>
+                                <p:commandButton update="growl,@form" value="Crear cuenta" icon="fa fa-fw fa-chevron-right"  action="#{registroViewController.crearCuenta2()}" ></p:commandButton>
                             </div>
                         </div>
                     </h:form>
