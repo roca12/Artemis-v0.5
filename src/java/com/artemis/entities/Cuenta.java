@@ -162,7 +162,6 @@ public class Cuenta implements Serializable {
         this.rango = rango;
     }
 
-    
 
     public String getCorreo() {
         return correo;
@@ -186,10 +185,7 @@ public class Cuenta implements Serializable {
             return false;
         }
         Cuenta other = (Cuenta) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

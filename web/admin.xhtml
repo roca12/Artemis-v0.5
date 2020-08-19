@@ -6,13 +6,33 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
     <ui:define name="content">
-        <div class="ui-fluid animated bounceInLeft" >
-            <ui:fragment rendered="#{login.nivel eq 0}">
-                <h:form>
-                    <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+        <ui:fragment rendered="#{login.nivel eq 0}">
+            <div class="ui-fluid animated bounceInLeft" >
+                <div class="row">
+                    <h1 style="color: #ac2925"><i class="fa fa-fw fa-angle-double-right"/> Administración: pagina principal</h1>
+                </div>
+                <p:separator/>
+                <div>
+                    <h1><i class="fa fa-fw fa-bar-chart-o"/>Estadisticas y gráficos</h1>
+                    <div class="col-lg-12">
+                        <h2><i class="fa fa-fw fa-child"/>Usuarios por rango</h2>
+                        <div class="row">
+                            <h:form>
+                                <p:donutChart model="#{chartsViewController.donutModel}" />
+                            </h:form>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <h2><i class="fa fa-fw fa-calendar"/>Accesos por mes</h2>
+                        <div class="row">
+                            <h:form>
+                                <p:barChart model="#{chartsViewController.barModel}" />
+                            </h:form>
+                        </div>
+                    </div>
 
-                </h:form>
-            </ui:fragment>
-        </div>
+                </div>
+            </div>
+        </ui:fragment>
     </ui:define>
 </ui:composition>

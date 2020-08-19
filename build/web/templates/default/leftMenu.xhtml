@@ -4,6 +4,7 @@
     <ui:fragment rendered="#{login.nivel eq 0}">
         <h5><i class="fa fa-fw fa-globe"/> Administración</h5>
         <ul class="nav nav-sidebar" >
+            <li><a href="#{indexViewController.links()}admin.xhtml">General</a></li>
             <li><a href="#{indexViewController.links()}admin/calendarioconf.xhtml">Configurar eventos</a></li>
             <li><a href="#{indexViewController.links()}admin/usersadmin.xhtml">Administrar Usuarios</a></li>
             <li><a href="#{indexViewController.links()}admin/ayudaconf.xhtml">Configurar Ayuda</a></li>

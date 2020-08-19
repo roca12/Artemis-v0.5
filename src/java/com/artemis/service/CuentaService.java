@@ -30,6 +30,7 @@ public class CuentaService {
     }
 
     public String createNewCuenta(String nombre1, String nombre2, String ap1, String ap2, String username, String password, Integer rank, String correo) {
+        entityMgrObj.getTransaction().begin();;
         Cuenta c = new Cuenta();
         c.setId(getMaxCuentaId());
         c.setPrimernombre(nombre1);
@@ -41,6 +42,8 @@ public class CuentaService {
         c.setRango(rank);
         c.setCorreo(correo);
         entityMgrObj.persist(c);
+        entityMgrObj.getTransaction().commit();
+        entityMgrObj.close();
         return "usersadmin.xhtml?faces-redirect=true";
     }
 
