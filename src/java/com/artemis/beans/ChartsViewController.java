@@ -116,20 +116,24 @@ public class ChartsViewController implements Serializable {
         bgColor2.add("rgba(16, 128, 33, 0.2)");
         bgColor2.add("rgba(16, 128, 33, 0.2)");
         bgColor2.add("rgba(16, 128, 33, 0.2)");
-        
+        bgColor2.add("rgba(16, 128, 33, 0.2)");
+        bgColor2.add("rgba(16, 128, 33, 0.2)");
+
         barDataSet.setBackgroundColor(bgColor2);
 
         List<String> borderColor2 = new ArrayList<>();
-        borderColor2.add("rgb(255, 99, 132)");
-        borderColor2.add("rgb(255, 159, 64)");
-        borderColor2.add("rgb(255, 205, 86)");
-        borderColor2.add("rgb(75, 192, 192)");
         borderColor2.add("rgb(54, 162, 235)");
-        borderColor2.add("rgb(153, 102, 255)");
-        borderColor2.add("rgb(201, 203, 207)");
         borderColor2.add("rgb(54, 162, 235)");
-        borderColor2.add("rgb(153, 102, 255)");
-        borderColor2.add("rgb(201, 203, 207)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
+        borderColor2.add("rgb(54, 162, 235)");
         barDataSet.setBorderColor(borderColor2);
         barDataSet.setBorderWidth(2);
 

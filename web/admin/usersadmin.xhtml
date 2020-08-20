@@ -16,7 +16,7 @@
                 </div>
                 <h:form id="cuentasForm" >
                     <p:growl id="growl"  life="800" showDetail="true"  />  
-                    <p:dataTable  id="cuentas" selection="#{cuentaViewController.selectedRow}" selectionMode="single" binding="#{table}" widgetVar="cuentasTable" value="#{cuentaViewController.cuentaListFromDb()}" var="cuenta" reflow="true" rows="7" 
+                    <p:dataTable  id="cuentas" selection="#{cuentaViewController.selectedRow}" disabledSelection="true" binding="#{table}" widgetVar="cuentasTable" value="#{cuentaViewController.cuentaListFromDb()}" var="cuenta" reflow="true" rows="7" 
                                   paginator="true" emptyMessage="No se encontraron cuentas con esos criterios" filteredValue="#{cuentaViewController.filteredCuentas}"
                                   rowKey="#{cuenta.id}" globalFilterFunction="#{cuentaViewController.globalFilterFunction}">
 
@@ -58,7 +58,7 @@
                             <p:commandButton  icon="fa fa-fw fa-trash-o"  value="Del" update="cuentas" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" >
                                 <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
                             </p:commandButton>
-                            #{cuentaViewController.cuentaSeleccionada.id}
+                            <!--#{cuentaViewController.cuentaSeleccionada.id}-->
                         </p:column>
                     </p:dataTable>
                 <!-- Dialogo de confirmacion de eliminacion -->
@@ -183,7 +183,7 @@
                         </h:form>
                     </p:outputPanel>
                 </p:dialog> 
-                <p:dialog header="Vitualizar Info" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="50%" >
+                <p:dialog header="actualizar Info" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="50%" >
                     <p:outputPanel id="dlgvista">
                         <h:form>
                             <div class="ui-fluid animated bounceInLeft" >
