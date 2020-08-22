@@ -1,36 +1,102 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
+    <!--Admin -->
     <ui:fragment rendered="#{login.nivel eq 0}">
-        <h5><i class="fa fa-fw fa-globe"/> Administración</h5>
-        <ul class="nav nav-sidebar" >
-            <li><a href="#{indexViewController.links()}admin.xhtml">General</a></li>
-            <li><a href="#{indexViewController.links()}admin/calendarioconf.xhtml">Configurar eventos</a></li>
-            <li><a href="#{indexViewController.links()}admin/usersadmin.xhtml">Administrar Usuarios</a></li>
-            <li><a href="#{indexViewController.links()}admin/ayudaconf.xhtml">Configurar Ayuda</a></li>
-        </ul>
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="container" >
+                        <h4 class="panel-title">
+                            <a id="adminmenu" data-toggle="collapse"   href="#collapse1" ><center><i class="fa fa-fw fa-gear" style="font-size: 40px"/></center></a>
+                        </h4>
+                        <div class="overlay">
+                            <div class="text"> <a id="adminmenuop" data-toggle="collapse"   href="#collapse1" style="font-size: 20px; color: whitesmoke; font-stretch: condensed "><b>Administración</b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <ul class="list-group">
+
+                        <li><a href="#{indexViewController.links()}admin.xhtml">General</a></li>
+                        <li><a href="#{indexViewController.links()}admin/calendarioconf.xhtml">Configurar eventos</a></li>
+                        <li><a href="#{indexViewController.links()}admin/usersadmin.xhtml">Administrar Usuarios</a></li>
+                        <li><a href="#{indexViewController.links()}admin/ayudaconf.xhtml">Configurar Ayuda</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </ui:fragment>
-    <h5><i class="fa fa-fw fa-info"/> Información general</h5>
-    <ul class="nav nav-sidebar" >
-        <li><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
-        <li><a href="#{indexViewController.links()}informacion/pcompetitiva.xhtml">Programación competitiva</a></li>
-        <li><a href="#{indexViewController.links()}informacion/competencias.xhtml">Competencias existentes</a></li>
-        <li><a href="#{indexViewController.links()}informacion/lenguajes.xhtml">Lenguajes de programación</a></li>
-    </ul>
-    <ui:fragment rendered="#{(login.nivel eq 5) or (login.nivel eq 0) }">
-        <h5><i class="fa fa-fw fa-book"/> Biblioteca</h5>
-        <ul class="nav nav-sidebar">
-            <li><a href="#{indexViewController.links()}biblioteca.xhtml">Temario</a></li>
-            <li><a href="#{indexViewController.links()}biblioteca/paginasentrenamiento.xhtml">Paginas de entrenamiento</a></li>
-            <li><a href="">DOMjudge</a></li>
-        </ul>
-        <h5><i class="fa fa-fw fa-globe"/> Paginas relacionadas</h5>
-        <ul class="nav nav-sidebar">
-            <li><a href="https://onlinejudge.org/">Online Judge®</a></li>
-            <li><a href="https://www.codechef.com/">CodeChef®</a></li>
-            <li><a href="https://codeforces.com/">CodeForces®</a></li>
-            <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM®</a></li>
-        </ul> 
+    <!--todos -->
+    <ui:fragment rendered="#{login.nivel ne 99}">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="container" >
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2" ><center><i class="fa fa-fw fa-info" style="font-size: 40px"/></center></a>
+                        </h4>
+                        <div class="overlay">
+                            <div class="text"> <a id="adminmenuop" data-toggle="collapse"   href="#collapse3" style="font-size: 20px; color: whitesmoke; font-stretch: condensed "><b>Info. básica</b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li><a href="#{indexViewController.links()}index.xhtml">Inicio</a></li>
+                        <li><a href="#{indexViewController.links()}informacion/pcompetitiva.xhtml">Programación competitiva</a></li>
+                        <li><a href="#{indexViewController.links()}informacion/competencias.xhtml">Competencias existentes</a></li>
+                        <li><a href="#{indexViewController.links()}informacion/lenguajes.xhtml">Lenguajes de programación</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group" >
+            <div class="panel panel-default">
+                <div class="panel-heading"  >
+                    <div class="container" >
+                        <h4 class="panel-title" >
+                            <a data-toggle="collapse" href="#collapse3" ><center><i class="fa fa-fw fa-book" style="font-size: 40px"/></center></a>
+                        </h4>
+                        <div class="overlay">
+                            <div class="text"> <a id="adminmenuop" data-toggle="collapse"   href="#collapse3" style="font-size: 20px; color: whitesmoke; font-stretch: condensed "><b>Biblioteca</b></a></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li><a href="#{indexViewController.links()}biblioteca.xhtml">Temario</a></li>
+                        <li><a href="#{indexViewController.links()}biblioteca/paginasentrenamiento.xhtml">Paginas de entrenamiento</a></li>
+                        <li><a href="">DOMjudge</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="container" >
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse4" ><center><i class="fa fa-fw fa-globe" style="font-size: 40px;" /></center></a>
+                        </h4>
+                        <div class="overlay">
+                            <div class="text"> <a id="adminmenuop" data-toggle="collapse"   href="#collapse4" style="font-size: 20px; color: whitesmoke; font-stretch: condensed "><b>Otras páginas</b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li><a href="https://onlinejudge.org/">Online Judge®</a></li>
+                        <li><a href="https://www.codechef.com/">CodeChef®</a></li>
+                        <li><a href="https://codeforces.com/">CodeForces®</a></li>
+                        <li><a href="https://codingcompetitions.withgoogle.com/codejam">Google CodeJAM®</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </ui:fragment> 
 
 

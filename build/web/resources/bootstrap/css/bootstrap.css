@@ -4801,9 +4801,8 @@ a.list-group-item-danger.active:focus {
     font-size: 16px;
     color: inherit;
 }
-.panel-title > a {
-    color: inherit;
-}
+
+
 .panel-footer {
     padding: 10px 15px;
     background-color: #f5f5f5;
@@ -4973,17 +4972,17 @@ a.list-group-item-danger.active:focus {
     border-bottom: 1px solid #ddd;
 }
 .panel-default {
-    border-color: #ddd;
+    border-color: #fff;
 }
 .panel-default > .panel-heading {
     color: #333;
     background-color: #f5f5f5;
-    border-color: #ddd;
+    border-color: #000;
 }
 .panel-default > .panel-heading + .panel-collapse .panel-body {
     border-top-color: #ddd;
 }
-.panel-default > .panel-footer + .panel-collapse .panel-body {
+.panel-default > .panel-footer + .panel-collapse .panel-body:hover {
     border-bottom-color: #ddd;
 }
 .panel-primary {
