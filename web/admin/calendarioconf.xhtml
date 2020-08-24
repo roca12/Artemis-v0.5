@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">
+        <div class="ui-fluid animated bounceInLeft" >
+            <ui:fragment rendered="#{login.nivel eq 0}">
+                <!-- Tabla -->
+                <h1><i class="fa fa-fw fa-chevron-right"/>Administración de calendario</h1>
+                <center><h2><h:outputText value="Lista de eventos"/></h2></center>
+                <div>                    
+                    <h:form>
+                        <p:commandButton  icon="fa fa-fw fa-chevron-right"  value="Agregar nuevo evento"  onclick="PF('dlg4').show();"  styleClass="btn btn-success btnSpace" style="background-color: #449d44;background-image: none;color:whitesmoke;" />
+                    </h:form>
+                </div>
+                <h:form id="eventosForm" >
+                    <p:growl id="growl"  life="800" showDetail="true"  />  
+                    <p:dataTable  id="eventos"  disabledSelection="true" binding="#{table}" widgetVar="eventosTable" value="#{calendarioViewController.getEventoList()}" var="evento" reflow="true" rows="7" 
+                                  paginator="true" emptyMessage="No se encontraron eventos con esos criterios" filteredValue="#{calendarioViewController.filteredEvento}"
+                                  rowKey="#{evento.id}" >
+
+                        <p:column headerText="Id">
+                            <h:outputText value="#{evento.id}" />                
+                        </p:column>
+                        <p:column headerText="Titulo evento" filterBy="#{evento.titulo}" >
+                            <h:outputText value="#{evento.titulo}" />
+                        </p:column>
+                        <!-- UTC a America/Bogota usando tolocal-->
+                        <p:column headerText="Fecha inicio" >
+                            <h:outputText value="#{evento.fechainicio}" />
+                        </p:column>
+
+                        <p:column headerText="Fecha fin">
+                            <h:outputText value="#{evento.fechafinal}" />
+                        </p:column>
+                        <p:column headerText="Descripción" filterBy="#{evento.descripcion}">
+                            <h:outputText value="#{evento.descripcion}" />
+                        </p:column>
+                        <p:column headerText="Opciones" style="width: 12%" >
+                            <div class="row">
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-info"  id="btn1"  update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: #0955B6;background-image: none;color:whitesmoke;width: 30px;height: 30px;">
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn1" for="@previous" value="Información" trackMouse="true" />
+                                </div>
+                                <span style="width: 50px;
+                                      height: 50px;"></span>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton icon="fa fa-fw fa-edit"  id="btn2"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: #DFB827;background-image: none;color:whitesmoke;width: 30px;height: 30px"  >
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn2" for="@previous" value="Editar" trackMouse="true" />
+                                </div>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-trash-o" id="btn3"  update="eventos" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: #850F3F;background-image: none;color:whitesmoke;width: 30px;height: 30px" >
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn3" for="@previous" value="Eliminar" trackMouse="true" />
+                                </div>
+                            </div> 
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                <!--Creacion de nuevo evento -->
+                <p:dialog header="Agregar nuevo evento"  showEffect="fade"  widgetVar="dlg4" responsive="true" height="80%" width="80%" >
+                    <div class="col-lg-12">
+                        <h1 style="color: red">Nuevo evento</h1>
+                        <p:separator/>
+                        <h:form  id="registroform">
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Titulo del evento:" for="titulo"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span class="ui-float-label">
+                                        <p:inputText id="titulo" value="#{calendarioViewController.titulonew}" ></p:inputText>
+                                        <p:outputLabel for="@previous" value="Titulo" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Fecha y hora de inicio:" for="fechaini" ></p:outputLabel>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p:datePicker id="fechaini" value="#{calendarioViewController.fechaininew}" hideOnDateTimeSelect="true" timeZone="America/Bogota" showTime="true" placeholder="Fecha de inicio del evento" focusOnSelect="true"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p:datePicker id="fechafin" value="#{calendarioViewController.fechafinnew}" hideOnDateTimeSelect="true" timeZone="America/Bogota" showTime="true" placeholder="Fecha de inicio del evento" focusOnSelect="true"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p:inputTextarea rows="5" cols="50" counter="display"  value="#{calendarioViewController.descnew}" maxlength="450" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                    <br />
+                                    <h:outputText id="display" />                                       
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p:outputLabel value="Todos los valores con * son obligatorios" ></p:outputLabel>
+                                </div>
+                            </div>
+                            <p:commandButton  value="Aceptar" update="@form" icon="fa fa-fw fa-save"  action="#{calendarioViewController.crearEvento()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                            <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg4').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                        </h:form>
+                    </div>
+                </p:dialog>
+                <!-- Dialogo de confirmacion de eliminacion -->
+                <p:dialog header="Confirmación" widgetVar="dlg" showEffect="fade" responsive="true" height="50%" >
+                    <h:form>
+                        <h:outputText value="¿Desea eliminar el campo permanentemente ?" />
+                        <p:commandButton  value="Aceptar" update="eventosForm" icon="fa fa-fw fa-trash-o"  action="#{calendarioViewController.deleteEventoById()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                        <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                    </h:form>
+                </p:dialog> 
+                <!-- Dialogo de edición -->
+                <p:dialog header="Editar evento" id="eldialogo"  showEffect="fade" widgetVar="dlg2" responsive="true" height="80%" width="80%" >
+                    <p:outputPanel id="dlgedit">
+                        <h:form>
+                            <div class="ui-fluid animated bounceInLeft" >
+                                <div class="col-lg-12">
+                                    <h1 style="color: red">Editar evento</h1>
+                                    <p:separator/>
+                                    Evento Id: #{calendarioViewController.eventoSeleccionado.id}
+                                    <h2 style="color: red"><i class="fa fa-fw fa-info-circle"></i>Información del evento</h2>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Titulo del evento:" for="titulo"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="titulo" value="#{calendarioViewController.eventoSeleccionado.titulo}" ></p:inputText>
+                                                <p:outputLabel for="@previous" value="Titulo" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de inicio:" for="fechaini" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:datePicker id="fechaini" value="#{calendarioViewController.eventoSeleccionado.fechainicio}" hideOnDateTimeSelect="true" timeZone="America/Bogota" showTime="true" placeholder="Fecha de inicio del evento" focusOnSelect="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:datePicker id="fechafin" value="#{calendarioViewController.eventoSeleccionado.fechafinal}" hideOnDateTimeSelect="true" timeZone="America/Bogota" showTime="true" placeholder="Fecha de inicio del evento" focusOnSelect="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:inputTextarea rows="5" cols="50" counter="display"  value="#{calendarioViewController.eventoSeleccionado.descripcion}" maxlength="450" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <br />
+                                            <h:outputText id="display" />                                       
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <p:spacer/>
+                                    <p:spacer/>
+
+                                </div>
+                                <p:commandButton  value="Guardar Cambios" update="eventosForm" icon="fa fa-fw fa-save"  action="#{calendarioViewController.actualizarEvento()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                                <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg2').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                            </div>
+                        </h:form>
+                    </p:outputPanel>
+                </p:dialog> 
+                <!--Dialogo de edición de evento -->
+                <p:dialog header="Actualizar evento" showEffect="fade" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="80%" width="80%" >
+                    <p:outputPanel id="dlgvista">
+                        <h:form>
+                            <div class="ui-fluid animated bounceInLeft" >
+                                <div class="col-lg-12">
+                                    <p:separator/>
+                                    Cuenta Id: #{calendarioViewController.eventoSeleccionado.id}
+                                    <h2 style="color: red"><i class="fa fa-fw fa-info-circle"></i>Información del evento</h2>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Titulo del evento:" for="titulo" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:outputLabel id="titulo"  value="#{calendarioViewController.eventoSeleccionado.titulo}" style="font-weight: lighter "></p:outputLabel>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de inicio:" for="fechaini"  ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:outputLabel id="fechaini" value="#{calendarioViewController.eventoSeleccionado.fechainicio}" style="font-weight: lighter "/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:outputLabel id="fechafin" value="#{calendarioViewController.eventoSeleccionado.fechafinal}" style="font-weight: lighter "/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Fecha y hora de finalización:" for="fechafin" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:outputLabel   value="#{calendarioViewController.eventoSeleccionado.descripcion}"  style="font-weight: lighter "/>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <p:commandButton   value="Cerrar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg3').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                            </div>
+                        </h:form>
+                    </p:outputPanel>
+                </p:dialog> 
+            </ui:fragment>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">
+        <div class="ui-fluid animated bounceInLeft" >
+            <ui:fragment rendered="#{login.nivel eq 0}">
+                <!-- Tabla -->
+                <h1><i class="fa fa-fw fa-chevron-right"/>Administración de usuarios</h1>
+                <center><h2><h:outputText value="Lista de usuarios"/></h2></center>
+                <div>                    
+                    <p:button outcome="newuser.xhtml" value="Agregar nueva cuenta" styleClass="btn btn-success btnSpace" />
+                </div>
+                <h:form id="cuentasForm" >
+                    <p:growl id="growl"  life="800" showDetail="true"  />  
+                    <p:dataTable  id="cuentas" selection="#{cuentaViewController.selectedRow}" disabledSelection="true" binding="#{table}" widgetVar="cuentasTable" value="#{cuentaViewController.cuentaListFromDb()}" var="cuenta" reflow="true" rows="7" 
+                                  paginator="true" emptyMessage="No se encontraron cuentas con esos criterios" filteredValue="#{cuentaViewController.filteredCuentas}"
+                                  rowKey="#{cuenta.id}" globalFilterFunction="#{cuentaViewController.globalFilterFunction}">
+
+                        <p:column headerText="Id" style="width:5%;" >
+                            <h:outputText value="#{cuenta.id}" />                
+                        </p:column>
+                        <p:column headerText="Primer nombre" filterBy="#{cuenta.primernombre}" >
+                            <h:outputText value="#{cuenta.primernombre}" />
+                        </p:column>
+                        <p:column headerText="Segundo nombre" filterBy="#{cuenta.segundonombre}">
+                            <h:outputText value="#{cuenta.segundonombre}" />
+                        </p:column>
+
+                        <p:column headerText="Primer apellido" filterBy="#{cuenta.primerapellido}">
+                            <h:outputText value="#{cuenta.primerapellido}" />
+                        </p:column>
+                        <p:column headerText="Segundo apellido" filterBy="#{cuenta.segundoapellido}">
+                            <h:outputText value="#{cuenta.segundoapellido}" />
+                        </p:column>
+
+                        <p:column headerText="Username" filterBy="#{cuenta.username}" style="width:10%;">
+                            <h:outputText value="#{cuenta.username}"  />
+                        </p:column>
+
+                        <p:column headerText="Rank" style="width:7%;">
+                            <h:outputText value="#{cuenta.rango eq 0 ?'A':'E'}" />
+                        </p:column>
+                        <p:column headerText="Correo" style="width:20%;"> 
+                            <h:outputText value="#{cuenta.correo}" />
+                        </p:column>
+                        <p:column headerText="Opciones" style="width:12%;">
+                            <div class="row">
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-info"  id="btn1"  update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: #0955B6;background-image: none;color:whitesmoke;width: 30px;height: 30px;">
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn1" for="@previous" value="Información" trackMouse="true" />
+                                </div>
+                                <span style="width: 50px;
+                                      height: 50px;"></span>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton icon="fa fa-fw fa-edit"  id="btn2"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: #DFB827;background-image: none;color:whitesmoke;width: 30px;height: 30px"  >
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn2" for="@previous" value="Editar" trackMouse="true" />
+                                </div>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-trash-o" id="btn3"  update="cuentas" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: #850F3F;background-image: none;color:whitesmoke;width: 30px;height: 30px" >
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn3" for="@previous" value="Eliminar" trackMouse="true" />
+                                </div>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                    <!-- Dialogo de confirmacion de eliminacion -->
+                </h:form>
+                <p:dialog header="Confirmación" widgetVar="dlg"  showEffect="fade" responsive="true" height="50%" >
+                    <h:form>
+                        <h:outputText value="¿Desea eliminar el campo permanentemente ?" />
+                        <p:commandButton  value="Aceptar" update="cuentasForm" icon="fa fa-fw fa-trash-o"  action="#{cuentaViewController.deleteCuentaById()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                        <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                    </h:form>
+                </p:dialog> 
+                <!-- Dialogo de edición -->
+                <p:dialog header="Editar cuenta" id="eldialogo"  showEffect="fade" widgetVar="dlg2" responsive="true" height="80%"  width="80%">
+                    <p:outputPanel id="dlgedit">
+                        <h:form>
+                            <div class="ui-fluid animated bounceInLeft" >
+                                <div class="col-lg-12">
+                                    <h1 style="color: red">Editar cuenta</h1>
+                                    <p:separator/>
+                                    Cuenta Id: #{cuentaViewController.cuentaSeleccionada.id}
+                                    <h2 style="color: red"><i class="fa fa-fw fa-info-circle"></i>Información general</h2>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Primer nombre:" for="primernombre"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="primernombre" value="#{cuentaViewController.cuentaSeleccionada.primernombre}" ></p:inputText>
+                                                <p:outputLabel for="@previous" value="Primer nombre" />
+                                            </span>
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Segundo nombre:" for="segundonombre"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="segundonombre" value="#{cuentaViewController.cuentaSeleccionada.segundonombre}"></p:inputText>
+                                                <p:outputLabel for="@previous" value="Segundo nombre" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Primer apellido:" for="primerapellido"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="primerapellido" value="#{cuentaViewController.cuentaSeleccionada.primerapellido}"></p:inputText>
+                                                <p:outputLabel for="@previous" value="Primer apellido" />
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Segundo apellido:" for="segundoapellido"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="segundoapellido" value="#{cuentaViewController.cuentaSeleccionada.segundoapellido}"></p:inputText>
+                                                <p:outputLabel for="@previous" value="Segundo apellido" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel  value="Correo electronico:" for="correo"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <span class="ui-float-label">
+                                                <p:inputText id="correo" value="#{cuentaViewController.cuentaSeleccionada.correo}"  
+                                                             validatorMessage="Formato de correo electronico invalido">
+                                                    <f:validateRegex
+                                                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                                </p:inputText>
+                                                <p:message for="correo" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Nombre de usuario:" for="usuario"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p:inputText    autocomplete="off" id="usuario" value="#{cuentaViewController.cuentaSeleccionada.username}" disabled="true"> <f:validateLength minimum="8" /></p:inputText>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Contraseña:" for="password"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p:password autocomplete="new-password" id="password"   value="#{cuentaViewController.cuentaSeleccionada.pass}"  feedback="true"
+                                                        promptLabel="Nivel nulo" weakLabel="Debil"
+                                                        goodLabel="Moderado" strongLabel="Fuerte" validatorMessage="La contraseña debe tener al menos 8 caracteres y coincidir con la confirmación"> <f:validateLength minimum="8" /></p:password>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p:outputLabel value="Nivel de permisos:" for="rango"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <p:selectOneRadio id="rango" value="#{cuentaViewController.cuentaSeleccionada.rango}" layout="responsive" columns="3" >
+                                                <f:selectItem  itemLabel="Admin" itemValue="0"/>
+                                                <f:selectItem   itemLabel="Estudiante" itemValue="5"/>
+                                            </p:selectOneRadio>
+                                        </div>
+                                    </div>              
+                                    <p:spacer/>
+                                    <p:spacer/>
+                                    <p:spacer/>
+
+                                </div>
+                            </div>
+                            <p:commandButton  value="Guardar Cambios" update="cuentasForm" icon="fa fa-fw fa-save"  action="#{cuentaViewController.actualizarCuenta()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                            <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg2').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                        </h:form>
+                    </p:outputPanel>
+                </p:dialog> 
+                <p:dialog header="actualizar Info" id="eldialogovista"  showEffect="fade" widgetVar="dlg3" responsive="true" height="80%"  width="80%" >
+                    <p:outputPanel id="dlgvista">
+                        <h:form>
+                            <div class="ui-fluid animated bounceInLeft" >
+                                <div class="col-lg-12">
+                                    <p:separator/>
+                                    Cuenta Id: #{cuentaViewController.cuentaSeleccionada.id}
+                                    <h2 style="color: red"><i class="fa fa-fw fa-info-circle"></i>Información general</h2>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Primer nombre:" for="primernombre" ></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+
+                                            <p:outputLabel id="primernombre"  value="#{cuentaViewController.cuentaSeleccionada.primernombre}" style="font-weight: lighter "></p:outputLabel>
+
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Segundo nombre:"  for="segundonombre"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+
+                                            <p:outputLabel id="segundonombre"   value="#{cuentaViewController.cuentaSeleccionada.segundonombre}" style="font-weight: lighter "></p:outputLabel>
+
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Primer apellido:" for="primerapellido"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+
+                                            <p:outputLabel id="primerapellido"   value="#{cuentaViewController.cuentaSeleccionada.primerapellido}" style="font-weight: lighter "></p:outputLabel>
+
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p:outputLabel value="Segundo apellido:" for="segundoapellido"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-3">
+
+                                            <p:outputLabel id="segundoapellido"   value="#{cuentaViewController.cuentaSeleccionada.segundoapellido}" style="font-weight: lighter "></p:outputLabel>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <p:outputLabel  value="Correo electronico:" for="correo"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <p:outputLabel id="correo"  value="#{cuentaViewController.cuentaSeleccionada.correo}" style="font-weight: lighter ">
+                                            </p:outputLabel>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p:outputLabel value="Nombre de usuario:" for="usuario"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p:outputLabel     id="usuario" value="#{cuentaViewController.cuentaSeleccionada.username}" style="font-weight: lighter " ></p:outputLabel>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p:outputLabel value="Contraseña:" for="password"></p:outputLabel>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <p:outputLabel  id="password"    value="#{cuentaViewController.cuentaSeleccionada.pass}" style="font-weight: lighter " ></p:outputLabel>
+                                        </div>
+                                    </div>
+                                    <p:spacer/>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p:outputLabel value="Nivel de permisos:" for="rango"></p:outputLabel>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <p:selectOneRadio id="rango" value="#{cuentaViewController.cuentaSeleccionada.rango}"  disabled="true" style="font-weight: lighter " columns="3" >
+                                                <f:selectItem  itemLabel="Admin" itemValue="0"/>
+                                                <f:selectItem   itemLabel="Estudiante" itemValue="5"/>
+                                            </p:selectOneRadio>
+                                        </div>
+                                    </div>              
+                                    <p:spacer/>
+                                    <p:spacer/>
+                                    <p:spacer/>
+
+                                </div>
+                            </div>
+                            <p:commandButton   value="Cerrar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg3').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                        </h:form>
+                    </p:outputPanel>
+                </p:dialog> 
+            </ui:fragment>
+        </div>
+    </ui:define>
+</ui:composition>

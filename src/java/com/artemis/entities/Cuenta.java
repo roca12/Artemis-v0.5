@@ -38,8 +38,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cuenta.findByRango", query = "SELECT c FROM Cuenta c WHERE c.rango = :rango")
     , @NamedQuery(name = "Cuenta.findByCorreo", query = "SELECT c FROM Cuenta c WHERE c.correo = :correo")})
 public class Cuenta implements Serializable {
-
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -74,7 +72,7 @@ public class Cuenta implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "rango")
-    private int rango;
+    private Integer rango;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -154,13 +152,14 @@ public class Cuenta implements Serializable {
         this.pass = pass;
     }
 
-    public int getRango() {
+    public Integer getRango() {
         return rango;
     }
 
-    public void setRango(int rango) {
+    public void setRango(Integer rango) {
         this.rango = rango;
     }
+
 
     public String getCorreo() {
         return correo;
@@ -184,10 +183,7 @@ public class Cuenta implements Serializable {
             return false;
         }
         Cuenta other = (Cuenta) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

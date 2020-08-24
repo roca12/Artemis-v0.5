@@ -6,7 +6,7 @@
          version="3.1">
     <session-config>
         <session-timeout>
-            30
+            60
         </session-timeout>
     </session-config>
     
@@ -65,4 +65,19 @@
         <extension>ico</extension>
         <mime-type>image/x-icon</mime-type>
     </mime-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errores/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errores/500.xhtml</location>
+    </error-page>
+    <error-page>
+        <location>/errores/error.xhtml</location>
+    </error-page>
+    <error-page> 
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type> 
+    <location>/errores/expired.xhtml</location> 
+</error-page>
 </web-app>

@@ -1,14 +1,15 @@
 package com.artemis.beans;
 
 import com.artemis.entities.Evento;
+import com.artemis.service.EventoService;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -26,7 +27,7 @@ import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
-    @ManagedBean(name = "calendarioViewController")
+@ManagedBean(name = "calendarioViewController")
 @ViewScoped
 public class CalendarioViewController implements Serializable {
 
@@ -42,11 +43,12 @@ public class CalendarioViewController implements Serializable {
     private String scrollTime = "06:00:00";
     private String minTime = "00:00:00";
     private String maxTime = "00:00:00";
-    private String locale = "en";
+    private String locale = "es";
     private String timeZone = "America/Bogota";
     private String clientTimeZone = "America/Bogota";
     private String columnHeaderFormat = "";
 
+    //---- carga de eventos a calendario-----//
     @PostConstruct
     public void init() {
         eventModel = new DefaultScheduleModel();
@@ -76,17 +78,6 @@ public class CalendarioViewController implements Serializable {
                                     addEvent(event);
                                 }
                         );
-                LocalDateTime inicio = LocalDateTime.of(2020, Month.APRIL, 3, 18, 00);
-                LocalDateTime fin = LocalDateTime.of(2020, Month.APRIL, 4, 23, 00);
-                DefaultScheduleEvent event = DefaultScheduleEvent.builder()
-                        .title("Google CodeJam 2020")
-                        .startDate(inicio)
-                        .endDate(fin)
-                        .description("Team A vs. Team B")
-                        .build();
-
-                addEvent(event);
-
             }
         };
     }
@@ -123,7 +114,6 @@ public class CalendarioViewController implements Serializable {
 
     public void addEvent() {
         if (event.isAllDay()) {
-            //see https://github.com/primefaces/primefaces/issues/1164
             if (event.getStartDate().toLocalDate().equals(event.getEndDate().toLocalDate())) {
                 event.setEndDate(event.getEndDate().plusDays(1));
             }
@@ -148,7 +138,6 @@ public class CalendarioViewController implements Serializable {
 
     public void onEventMove(ScheduleEntryMoveEvent event) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Delta:" + event.getDeltaAsDuration());
-
         addMessage(message);
     }
 
@@ -265,4 +254,129 @@ public class CalendarioViewController implements Serializable {
     public void setColumnHeaderFormat(String columnHeaderFormat) {
         this.columnHeaderFormat = columnHeaderFormat;
     }
+    //---- Crear eliminar actualizar evento----//
+    private Integer idnew;
+    private String titulonew;
+    private Date fechaininew;
+    private Date fechafinnew;
+    private String descnew;
+    private Evento eventoSeleccionado;
+
+    private List<Evento> filteredEvento;
+    EventoService eventoService = new EventoService();
+
+    // _____________________________________________//
+    public String crearEvento() {
+        return eventoService.createNewEvento(null, titulonew, fechaininew, fechafinnew, descnew); 
+    }
+
+    public List<Evento> getEventoList() {
+        return eventoService.getAllEvento();
+    }
+
+    public String deleteEventoById() {
+        return eventoService.deleteEvento(eventoSeleccionado);
+    }
+
+    public String actualizarEvento() {
+        Integer id2 = eventoSeleccionado.getId();
+        String titulo = eventoSeleccionado.getTitulo();
+        Date fechaini = eventoSeleccionado.getFechainicio();
+        Date fechafin = eventoSeleccionado.getFechafinal();
+        String desc = eventoSeleccionado.getDescripcion();
+        return eventoService.updateEventoDetails(id2, titulo, fechaini, fechafin, desc);
+    }
+
+    public boolean filterByTitulo(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+
+        if (value == null) {
+            return false;
+        }
+        Evento ev = (Evento) value;
+        return ev.getTitulo().contains(filterText);
+    }
+
+//    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+//        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+//        if (filterText == null || filterText.equals("")) {
+//            return true;
+//        }
+//
+//        Evento ev = (Evento) value;
+//        return ev.getId() < filterInt
+//                || ev.getFecha().contains(filterText)
+//                || ev.getSegundonombre().contains(filterText)
+//                || ev.getPrimerapellido().contains(filterText)
+//                || ev.getSegundoapellido().contains(filterText)
+//                || ev.getUsername().contains(filterText)
+//                || ev.getCorreo().contains(filterText);
+//    }
+    public Integer getIdnew() {
+        return idnew;
+    }
+
+    public void setIdnew(Integer idnew) {
+        this.idnew = idnew;
+    }
+
+    public String getTitulonew() {
+        return titulonew;
+    }
+
+    public void setTitulonew(String titulonew) {
+        this.titulonew = titulonew;
+    }
+
+    public Date getFechaininew() {
+        return fechaininew;
+    }
+
+    public void setFechaininew(Date fechaininew) {
+        this.fechaininew = fechaininew;
+    }
+
+    public Date getFechafinnew() {
+        return fechafinnew;
+    }
+
+    public void setFechafinnew(Date fechafinnew) {
+        this.fechafinnew = fechafinnew;
+    }
+
+    public String getDescnew() {
+        return descnew;
+    }
+
+    public void setDescnew(String descnew) {
+        this.descnew = descnew;
+    }
+
+    public Evento getEventoSeleccionado() {
+        return eventoSeleccionado;
+    }
+
+    public void setEventoSeleccionado(Evento eventoSeleccionado) {
+        this.eventoSeleccionado = eventoSeleccionado;
+    }
+
+    public List<Evento> getFilteredEvento() {
+        return filteredEvento;
+    }
+
+    public void setFilteredEvento(List<Evento> filteredEvento) {
+        this.filteredEvento = filteredEvento;
+    }
+
+    public EventoService getEventoService() {
+        return eventoService;
+    }
+
+    public void setEventoService(EventoService eventoService) {
+        this.eventoService = eventoService;
+    }
+
 }
