@@ -47,23 +47,34 @@
                         <p:column headerText="Correo" style="width:20%;"> 
                             <h:outputText value="#{cuenta.correo}" />
                         </p:column>
-                        <p:column headerText="Opciones" style="width:10%;">
-
-                            <p:commandButton  icon="fa fa-fw fa-info" value="Info"   update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: darkblue;background-image: none;color:whitesmoke;">
-                                <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
-                            </p:commandButton>
-                            <p:commandButton icon="fa fa-fw fa-edit"  value="Edit"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: orange;background-image: none;color:whitesmoke;"  >
-                                <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
-                            </p:commandButton>
-                            <p:commandButton  icon="fa fa-fw fa-trash-o"  value="Del" update="cuentas" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" >
-                                <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
-                            </p:commandButton>
-                            <!--#{cuentaViewController.cuentaSeleccionada.id}-->
+                        <p:column headerText="Opciones" style="width:12%;">
+                            <div class="row">
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-info"  id="btn1"  update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: #0955B6;background-image: none;color:whitesmoke;width: 30px;height: 30px;">
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn1" for="@previous" value="Información" trackMouse="true" />
+                                </div>
+                                <span style="width: 50px;
+                                      height: 50px;"></span>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton icon="fa fa-fw fa-edit"  id="btn2"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: #DFB827;background-image: none;color:whitesmoke;width: 30px;height: 30px"  >
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn2" for="@previous" value="Editar" trackMouse="true" />
+                                </div>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-trash-o" id="btn3"  update="cuentas" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: #850F3F;background-image: none;color:whitesmoke;width: 30px;height: 30px" >
+                                        <f:setPropertyActionListener value="#{cuenta}" target="#{cuentaViewController.cuentaSeleccionada}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn3" for="@previous" value="Eliminar" trackMouse="true" />
+                                </div>
+                            </div>
                         </p:column>
                     </p:dataTable>
-                <!-- Dialogo de confirmacion de eliminacion -->
+                    <!-- Dialogo de confirmacion de eliminacion -->
                 </h:form>
-                <p:dialog header="Confirmación" widgetVar="dlg" responsive="true" height="50%" >
+                <p:dialog header="Confirmación" widgetVar="dlg"  showEffect="fade" responsive="true" height="50%" >
                     <h:form>
                         <h:outputText value="¿Desea eliminar el campo permanentemente ?" />
                         <p:commandButton  value="Aceptar" update="cuentasForm" icon="fa fa-fw fa-trash-o"  action="#{cuentaViewController.deleteCuentaById()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
@@ -71,7 +82,7 @@
                     </h:form>
                 </p:dialog> 
                 <!-- Dialogo de edición -->
-                <p:dialog header="Editar cuenta" id="eldialogo"  widgetVar="dlg2" responsive="true" height="50%" >
+                <p:dialog header="Editar cuenta" id="eldialogo"  showEffect="fade" widgetVar="dlg2" responsive="true" height="80%"  width="80%">
                     <p:outputPanel id="dlgedit">
                         <h:form>
                             <div class="ui-fluid animated bounceInLeft" >
@@ -175,7 +186,7 @@
                                     <p:spacer/>
                                     <p:spacer/>
                                     <p:spacer/>
-                                    
+
                                 </div>
                             </div>
                             <p:commandButton  value="Guardar Cambios" update="cuentasForm" icon="fa fa-fw fa-save"  action="#{cuentaViewController.actualizarCuenta()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
@@ -183,7 +194,7 @@
                         </h:form>
                     </p:outputPanel>
                 </p:dialog> 
-                <p:dialog header="actualizar Info" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="50%" >
+                <p:dialog header="actualizar Info" id="eldialogovista"  showEffect="fade" widgetVar="dlg3" responsive="true" height="80%"  width="80%" >
                     <p:outputPanel id="dlgvista">
                         <h:form>
                             <div class="ui-fluid animated bounceInLeft" >
@@ -197,18 +208,18 @@
                                             <p:outputLabel value="Primer nombre:" for="primernombre" ></p:outputLabel>
                                         </div>
                                         <div class="col-lg-3">
-           
-                                                <p:outputLabel id="primernombre"  value="#{cuentaViewController.cuentaSeleccionada.primernombre}" style="font-weight: lighter "></p:outputLabel>
-                          
+
+                                            <p:outputLabel id="primernombre"  value="#{cuentaViewController.cuentaSeleccionada.primernombre}" style="font-weight: lighter "></p:outputLabel>
+
                                         </div>
 
                                         <div class="col-lg-3">
                                             <p:outputLabel value="Segundo nombre:"  for="segundonombre"></p:outputLabel>
                                         </div>
                                         <div class="col-lg-3">
-                                         
-                                                <p:outputLabel id="segundonombre"   value="#{cuentaViewController.cuentaSeleccionada.segundonombre}" style="font-weight: lighter "></p:outputLabel>
-                                     
+
+                                            <p:outputLabel id="segundonombre"   value="#{cuentaViewController.cuentaSeleccionada.segundonombre}" style="font-weight: lighter "></p:outputLabel>
+
                                         </div>
                                     </div>
                                     <p:spacer/>
@@ -217,16 +228,16 @@
                                             <p:outputLabel value="Primer apellido:" for="primerapellido"></p:outputLabel>
                                         </div>
                                         <div class="col-lg-3">
-                                         
-                                                <p:outputLabel id="primerapellido"   value="#{cuentaViewController.cuentaSeleccionada.primerapellido}" style="font-weight: lighter "></p:outputLabel>
-                                          
+
+                                            <p:outputLabel id="primerapellido"   value="#{cuentaViewController.cuentaSeleccionada.primerapellido}" style="font-weight: lighter "></p:outputLabel>
+
                                         </div>
                                         <div class="col-lg-3">
                                             <p:outputLabel value="Segundo apellido:" for="segundoapellido"></p:outputLabel>
                                         </div>
                                         <div class="col-lg-3">
-                                        
-                                                <p:outputLabel id="segundoapellido"   value="#{cuentaViewController.cuentaSeleccionada.segundoapellido}" style="font-weight: lighter "></p:outputLabel>
+
+                                            <p:outputLabel id="segundoapellido"   value="#{cuentaViewController.cuentaSeleccionada.segundoapellido}" style="font-weight: lighter "></p:outputLabel>
                                         </div>
                                     </div>
                                     <p:spacer/>
@@ -235,9 +246,9 @@
                                             <p:outputLabel  value="Correo electronico:" for="correo"></p:outputLabel>
                                         </div>
                                         <div class="col-lg-4">
-                                           
-                                                <p:outputLabel id="correo"  value="#{cuentaViewController.cuentaSeleccionada.correo}" style="font-weight: lighter ">
-                                                </p:outputLabel>
+
+                                            <p:outputLabel id="correo"  value="#{cuentaViewController.cuentaSeleccionada.correo}" style="font-weight: lighter ">
+                                            </p:outputLabel>
                                         </div>
                                     </div>
                                     <p:spacer/>
@@ -254,7 +265,7 @@
                                         <div class="col-lg-4">
                                             <p:outputLabel value="Contraseña:" for="password"></p:outputLabel>
                                         </div>
-                                        
+
                                         <div class="col-lg-4">
                                             <p:outputLabel  id="password"    value="#{cuentaViewController.cuentaSeleccionada.pass}" style="font-weight: lighter " ></p:outputLabel>
                                         </div>
@@ -275,7 +286,7 @@
                                     <p:spacer/>
                                     <p:spacer/>
                                     <p:spacer/>
-                                    
+
                                 </div>
                             </div>
                             <p:commandButton   value="Cerrar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg3').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />

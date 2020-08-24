@@ -39,23 +39,34 @@
                         <p:column headerText="Descripción" filterBy="#{evento.descripcion}">
                             <h:outputText value="#{evento.descripcion}" />
                         </p:column>
-                        <p:column headerText="Opciones" >
-
-                            <p:commandButton  icon="fa fa-fw fa-info" value="Info"   update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: darkblue;background-image:  none;color:whitesmoke;">
-                                <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
-                            </p:commandButton>
-                            <p:commandButton icon="fa fa-fw fa-edit"  value="Edit"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: orange;background-image: none;color:whitesmoke;"  >
-                                <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
-                            </p:commandButton>
-                            <p:commandButton  icon="fa fa-fw fa-trash-o"  value="Del" update="eventos" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" >
-                                <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
-                            </p:commandButton>
-                            #{calendarioViewController.eventoSeleccionado.id}
+                        <p:column headerText="Opciones" style="width: 12%" >
+                            <div class="row">
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-info"  id="btn1"  update="eldialogovista"  oncomplete="PF('dlg3').show();" styleClass="btn btn-info" style="background-color: #0955B6;background-image: none;color:whitesmoke;width: 30px;height: 30px;">
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn1" for="@previous" value="Información" trackMouse="true" />
+                                </div>
+                                <span style="width: 50px;
+                                      height: 50px;"></span>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton icon="fa fa-fw fa-edit"  id="btn2"  update="eldialogo" oncomplete="PF('dlg2').show();"   styleClass="btn btn-warning" style="background-color: #DFB827;background-image: none;color:whitesmoke;width: 30px;height: 30px"  >
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn2" for="@previous" value="Editar" trackMouse="true" />
+                                </div>
+                                <div class="col-lg-2" style="padding-right: 20px"> 
+                                    <p:commandButton  icon="fa fa-fw fa-trash-o" id="btn3"  update="eventos" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: #850F3F;background-image: none;color:whitesmoke;width: 30px;height: 30px" >
+                                        <f:setPropertyActionListener value="#{evento}" target="#{calendarioViewController.eventoSeleccionado}" />
+                                    </p:commandButton>
+                                    <p:tooltip id="toolTipbtn3" for="@previous" value="Eliminar" trackMouse="true" />
+                                </div>
+                            </div> 
                         </p:column>
                     </p:dataTable>
                 </h:form>
                 <!--Creacion de nuevo evento -->
-                <p:dialog header="Agregar nuevo evento" widgetVar="dlg4" responsive="true" height="50%" >
+                <p:dialog header="Agregar nuevo evento"  showEffect="fade"  widgetVar="dlg4" responsive="true" height="80%" width="80%" >
                     <div class="col-lg-12">
                         <h1 style="color: red">Nuevo evento</h1>
                         <p:separator/>
@@ -109,7 +120,7 @@
                     </div>
                 </p:dialog>
                 <!-- Dialogo de confirmacion de eliminacion -->
-                <p:dialog header="Confirmación" widgetVar="dlg" responsive="true" height="50%" >
+                <p:dialog header="Confirmación" widgetVar="dlg" showEffect="fade" responsive="true" height="50%" >
                     <h:form>
                         <h:outputText value="¿Desea eliminar el campo permanentemente ?" />
                         <p:commandButton  value="Aceptar" update="eventosForm" icon="fa fa-fw fa-trash-o"  action="#{calendarioViewController.deleteEventoById()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
@@ -117,7 +128,7 @@
                     </h:form>
                 </p:dialog> 
                 <!-- Dialogo de edición -->
-                <p:dialog header="Editar evento" id="eldialogo"  widgetVar="dlg2" responsive="true" height="80%" >
+                <p:dialog header="Editar evento" id="eldialogo"  showEffect="fade" widgetVar="dlg2" responsive="true" height="80%" width="80%" >
                     <p:outputPanel id="dlgedit">
                         <h:form>
                             <div class="ui-fluid animated bounceInLeft" >
@@ -176,7 +187,7 @@
                     </p:outputPanel>
                 </p:dialog> 
                 <!--Dialogo de edición de evento -->
-                <p:dialog header="Actualizar evento" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="50%" >
+                <p:dialog header="Actualizar evento" showEffect="fade" id="eldialogovista"  widgetVar="dlg3" responsive="true" height="80%" width="80%" >
                     <p:outputPanel id="dlgvista">
                         <h:form>
                             <div class="ui-fluid animated bounceInLeft" >

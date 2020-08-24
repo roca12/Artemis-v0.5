@@ -69,10 +69,12 @@ li:hover{
 a{
     color: black;
     transition: all 0.3s;
+    font-weight: bold;
 }
 a:hover{
     color: white;
     transition: all 0.3s;
+    font-weight: bold;
 }
 .container {
   position: relative;

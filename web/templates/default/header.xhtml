@@ -8,22 +8,22 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-institution"/> Sistema ARTEMIS</a>
+                <a class="navbar-brand" href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-code" style="font-size: 20px"/> Sistema ARTEMIS</a>
                 <ui:fragment rendered="#{login.nivel ne 99}">
-                    <a class="navbar-brand" style="color: whitesmoke"><i class="fa fa-fw fa-chevron-right"/> Bienvenido #{login.user eq null?usuario:login.user}</a>   
+                    <a class="navbar-brand" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-chevron-right"/> Bienvenido #{login.user eq null?usuario:login.user}</a>   
                 </ui:fragment>
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-home" style="color: whitesmoke"/> Inicio</a></li>
-                    <li><a href="#{indexViewController.links()}calendario.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-calendar " style="color: whitesmoke"/> Calendario</a></li>
-                    <li><a href="#{indexViewController.links()}ayuda.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-info-circle" style="color: whitesmoke"/> Ayuda</a></li>
+                    <li><a href="#{indexViewController.links()}index.xhtml" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-home" style="color: whitesmoke"/> Inicio</a></li>
+                    <li><a href="#{indexViewController.links()}calendario.xhtml" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-calendar " style="color: whitesmoke"/> Calendario</a></li>
+                    <li><a href="#{indexViewController.links()}ayuda.xhtml" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-info-circle" style="color: whitesmoke"/> Ayuda</a></li>
                     <ui:fragment rendered="#{login.user eq null or login.user eq 99}">
-                        <li><a href="#{indexViewController.links()}login.xhtml" style="color: whitesmoke"><i class="fa fa-fw fa-arrow-right" style="color: whitesmoke"/> Iniciar Sesión</a></li>
+                        <li><a href="#{indexViewController.links()}login.xhtml" style="color: whitesmoke;font-family: 'Ubuntu';"><i class="fa fa-fw fa-arrow-right" style="color: whitesmoke"/> Iniciar Sesión</a></li>
                     </ui:fragment>
                     <ui:fragment rendered="#{login.user ne null}">
-                        <li><h:form><p:commandButton value="Cerrar sesión" update="@form" style="height: 50px;color:whitesmoke;background-image: none;background-color: #222;border-color:#222;border-top-style: none;border-top-color: #222" action="#{login.logout()}"></p:commandButton></h:form></li>
+                        <li><h:form><p:commandButton value="Cerrar sesión" update="@form" style="height: 50px;color:whitesmoke;font-family: 'Ubuntu';background-image: none;background-color: #222;border-color:#222;border-top-style: none;border-top-color: #222" action="#{login.logout()}"></p:commandButton></h:form></li>
                     </ui:fragment>
                 </ul>
             </div>
