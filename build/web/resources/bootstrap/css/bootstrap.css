@@ -2397,8 +2397,8 @@ input[type="button"].btn-block {
         url("#{resource['bootstrap/fonts/glyphicons-halflings-regular.ttf']}") format('truetype'),
         url("#{resource['bootstrap/fonts/glyphicons-halflings-regular.svg']}#glyphicons_halflingsregular") format('svg');
     font-family: 'Ubuntu';
-        src: url("#{resource['bootstrap/fonts/Ubuntu-Medium.ttf']}") format('truetype');
-    
+    src: url("#{resource['bootstrap/fonts/Ubuntu-Medium.ttf']}") format('truetype');
+
 }
 .glyphicon {
     position: relative;
@@ -6194,4 +6194,86 @@ body .ui-datatable .ui-paginator.ui-paginator-top {
     border-bottom: 0 none; }
 body .ui-datatable .ui-paginator.ui-paginator-bottom {
     border-top: 0 none; }
+body .ui-fileupload .ui-fileupload-buttonbar {
+    border: 1px solid #c8c8c8;
+    background-color: #262626;
+    background-image: none;
+    color: #262626;
+    padding: 0.571em 1em; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button {
+    margin-right: 0.429em; 
+    border: 1px solid #fff;
+    background-color: #262626;
+    color: #fff;
+    background-image: none;
+    border-top-color: #262626;
+}
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-choose .ui-icon {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0px !important;
+    text-align: center; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-choose .ui-icon:before {
+    content: ""; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-upload .ui-icon {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0px !important;
+    text-align: center; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-upload .ui-icon:before {
+    content: ""; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-cancel .ui-icon {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0px !important;
+    text-align: center; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-fileupload-cancel .ui-icon:before {
+    content: ""; }
+body .ui-fileupload .ui-fileupload-buttonbar .ui-button.ui-state-disabled {
+    display: none; }
+body .ui-fileupload .ui-fileupload-content {
+    border: 1px solid #c8c8c8;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 0.571em 1em;
+    border-top: 0 none;
+    line-height: 1.5; }
+body .ui-fileupload .ui-fileupload-content .ui-fileupload-cancel .ui-icon {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0px !important;
+    text-align: center; }
+body .ui-fileupload .ui-fileupload-content .ui-fileupload-cancel .ui-icon:before {
+    content: ""; }
+body .ui-fileupload .ui-fileupload-content .ui-fileupload-files .ui-fileupload-row > div {
+    padding: 0.429em 0.857em; }
+body .ui-fileupload-simple {
+    overflow: visible; }
+body .ui-fileupload-simple .ui-icon-plusthick {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0px !important;
+    text-align: center; }
+body .ui-fileupload-simple .ui-icon-plusthick:before {
+    content: ""; }
 /*# sourceMappingURL=bootstrap.css.map */
