@@ -12,37 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "login.xhtml" })
+@WebFilter(filterName = "AuthFilter", urlPatterns = {"login.xhtml"})
 public class AuthorizationFilter implements Filter {
 
-	public AuthorizationFilter() {
-	}
+    public AuthorizationFilter() {
+    }
 
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
 
-	}
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		try {
-			HttpServletRequest reqt = (HttpServletRequest) request;
-			HttpServletResponse resp = (HttpServletResponse) response;
-			HttpSession ses = reqt.getSession(false);
-			String reqURI = reqt.getRequestURI();
-			if (reqURI.contains("/login.xhtml")
-					|| (ses != null && ses.getAttribute("username") != null)
-					|| reqURI.contains("/public/")
-					|| reqURI.contains("javax.faces.resource"))
-				chain.doFilter(request, response);
-			else
-				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
-		} catch (IOException | ServletException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	@Override
-	public void destroy() {
-	}
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) throws IOException, ServletException {
+        try {
+            HttpServletRequest reqt = (HttpServletRequest) request;
+            HttpServletResponse resp = (HttpServletResponse) response;
+            HttpSession ses = reqt.getSession(false);
+            String reqURI = reqt.getRequestURI();
+            if (reqURI.contains("/login.xhtml")
+                    || (ses != null && ses.getAttribute("username") != null)
+                    || reqURI.contains("javax.faces.resource")) {
+                chain.doFilter(request, response);
+            } else {
+                resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
+            }
+        } catch (IOException | ServletException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void destroy() {
+    }
 }

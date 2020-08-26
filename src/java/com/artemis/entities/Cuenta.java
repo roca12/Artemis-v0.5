@@ -38,6 +38,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cuenta.findByRango", query = "SELECT c FROM Cuenta c WHERE c.rango = :rango")
     , @NamedQuery(name = "Cuenta.findByCorreo", query = "SELECT c FROM Cuenta c WHERE c.correo = :correo")})
 public class Cuenta implements Serializable {
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "rango")
+    private int rango;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -69,10 +74,6 @@ public class Cuenta implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "pass")
     private String pass;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "rango")
-    private Integer rango;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -152,13 +153,6 @@ public class Cuenta implements Serializable {
         this.pass = pass;
     }
 
-    public Integer getRango() {
-        return rango;
-    }
-
-    public void setRango(Integer rango) {
-        this.rango = rango;
-    }
 
 
     public String getCorreo() {
@@ -189,6 +183,14 @@ public class Cuenta implements Serializable {
     @Override
     public String toString() {
         return "com.artemis.entities.Cuenta[ id=" + id + " ]";
+    }
+
+    public int getRango() {
+        return rango;
+    }
+
+    public void setRango(int rango) {
+        this.rango = rango;
     }
     
 }

@@ -1,57 +1,74 @@
 create database Artemis;
 use Artemis;
-create table eventos(
-id integer primary key not null auto_increment,
-titulo varchar(200) not null,
-fechainicio datetime not null,
-fechafinal datetime not null,
-descripcion varchar(500)
-); 
-create table cuentas(
-id integer primary key not null auto_increment,
-primernombre varchar(30) not null,
-segundonombre varchar(30),
-primerapellido varchar(30) not null,
-segundoapellido varchar(30),
-username varchar(50) unique key not null,
-username varchar(50) unique key not null,
-pass varchar(50) not null,
-rango int not null,
-correo varchar(50) not null  
+CREATE TABLE eventos (
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(200) NOT NULL,
+    fechainicio DATETIME NOT NULL,
+    fechafinal DATETIME NOT NULL,
+    descripcion VARCHAR(500)
 );
-
-insert into eventos values (null,'prueba','2020-04-13 11:00:00','2020-04-13 12:00:00','prueba descripcion');
-insert into eventos values (null,'Entrenamiento JSF','2020-04-14 18:00:00','2020-04-14 20:00:00','JSF');
-insert into cuentas values (null,'diego',null,'rodriguez',null,'roca12','piroloco2112',0,'roca12@gmail.ocm');
-select * from eventos;
-select * from cuentas;
-########################   NG    #########################
-
-create table auditoriaacceso (
-id integer primary key not null auto_increment,
-username varchar(30),
-fechaentrada datetime,
-hosturl varchar(400) 
+CREATE TABLE cuentas (
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    primernombre VARCHAR(30) NOT NULL,
+    segundonombre VARCHAR(30),
+    primerapellido VARCHAR(30) NOT NULL,
+    segundoapellido VARCHAR(30),
+    username VARCHAR(50) UNIQUE KEY NOT NULL,
+    pass VARCHAR(50) NOT NULL,
+    rango INT NOT NULL,
+    correo VARCHAR(50) NOT NULL
 );
 
 
-create table visitaspormesanio(
-id integer primary key not null auto_increment,
-anio integer not null unique key,
-enero integer not null,
-febrero integer not null,
-marzo integer not null,
-abril integer not null,
-mayo integer not null,
-junio integer not null,
-julio integer not null,
-agosto integer not null,
-septiembre integer not null,
-octubre integer not null,
-noviembre integer not null,
-diciembre integer not null
+insert into cuentas values (null,'Diego','Fernando','Rodriguez','Castañeda','admin','CQD6G3Q2uPPsJ+zROkYjMg==',0,'roca12@gmail.ocm');
+insert into cuentas values (null,'Edwin','','Villarraga','','admin2','q0bYFxjCQNKMPnPnTbECDw==',0,'');
+
+SELECT 
+    *
+FROM
+    eventos;
+    
+SELECT 
+    *
+FROM
+    cuentas;
+    
+CREATE TABLE auditoriaacceso (
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username VARCHAR(30),
+    fechaentrada DATETIME,
+    hosturl VARCHAR(400)
+);
+
+
+CREATE TABLE visitaspormesanio (
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    anio INTEGER NOT NULL UNIQUE KEY,
+    enero INTEGER NOT NULL,
+    febrero INTEGER NOT NULL,
+    marzo INTEGER NOT NULL,
+    abril INTEGER NOT NULL,
+    mayo INTEGER NOT NULL,
+    junio INTEGER NOT NULL,
+    julio INTEGER NOT NULL,
+    agosto INTEGER NOT NULL,
+    septiembre INTEGER NOT NULL,
+    octubre INTEGER NOT NULL,
+    noviembre INTEGER NOT NULL,
+    diciembre INTEGER NOT NULL
 );
 insert into visitaspormesanio values (null,2019,1,3,5,0,5,0,5,0,3,0,3,0);
 insert into visitaspormesanio values (null,2020,0,0,0,0,0,0,0,0,0,0,0,0);
+
+
+CREATE TABLE archivosayuda (
+    ID BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    FILE_NAME VARCHAR(50) NOT NULL,
+    FILE_DATA longblob NOT NULL,
+    FILE_EXTENSION VARCHAR(20) NOT NULL,
+    DESCRIPTION VARCHAR(255)
+);
+
+drop table archivosayuda;
 
 

@@ -2,7 +2,9 @@ package com.artemis.beans;
 
 import com.artemis.entities.Cuenta;
 import com.artemis.service.AuditoriaService;
+import com.artemis.service.CuentaService;
 import com.artemis.service.VistasMesAnioService;
+import com.artemis.util.AES;
 import java.io.Serializable;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -47,51 +49,45 @@ public class Login implements Serializable {
         if (xForwardedForHeader == null) {
             return request.getRemoteAddr();
         } else {
-            // As of https://en.wikipedia.org/wiki/X-Forwarded-For
-            // The general format of the field is: X-Forwarded-For: client, proxy1, proxy2 ...
-            // we only want the client
             return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
         }
     }
 
-    public int validate() {
+   
+    public int validate(String user) {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String url = getClientIpAddress(request);
-        final String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
-        final EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
-        Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c");
-        List<Cuenta> list = queryObj.getResultList();
-        for (Cuenta c : list) {
-            if (c.getUsername().equals(user) && c.getPass().equals(pwd) && c.getRango() == 0) {
-                nivel = 0;
-                auditoriaService.createAudit(c.getUsername(), url);
-                try {
-                    vistasMesAnioService.updateVisitas();
-                } catch (Exception e) {
-                    vistasMesAnioService.createAnioVisitas();
-                    vistasMesAnioService.updateVisitas();
-                }
-
-                return 0;
-            } else if (c.getUsername().equals(user) && c.getPass().equals(pwd) && c.getRango() == 5) {
-                nivel = 5;
-                auditoriaService.createAudit(c.getUsername(), url);
-                auditoriaService.createAudit(c.getUsername(), url);
-                try {
-                    vistasMesAnioService.updateVisitas();
-                } catch (Exception e) {
-                    vistasMesAnioService.createAnioVisitas();
-                    vistasMesAnioService.updateVisitas();
-                }
-                return 5;
+        CuentaService cuentaService= new CuentaService();
+        Cuenta c= cuentaService.getCuentaByUser(user);
+        if (AES.decrypt(c.getPass(),AES.KEYART).equals(pwd) && c.getRango() == 0) {
+            nivel = 0;
+            auditoriaService.createAudit(c.getUsername(), url);
+            try {
+                vistasMesAnioService.updateVisitas();
+            } catch (Exception e) {
+                vistasMesAnioService.createAnioVisitas();
+                vistasMesAnioService.updateVisitas();
             }
+
+            return 0;
+        } else if (AES.decrypt(c.getPass(),AES.KEYART).equals(pwd) && c.getRango() == 5) {
+            nivel = 5;
+            auditoriaService.createAudit(c.getUsername(), url);
+            auditoriaService.createAudit(c.getUsername(), url);
+            try {
+                vistasMesAnioService.updateVisitas();
+            } catch (Exception e) {
+                vistasMesAnioService.createAnioVisitas();
+                vistasMesAnioService.updateVisitas();
+            }
+            return 5;
         }
         return 99;
     }
     //validate login
 
     public String validateUsernamePassword() {
-        int valid = validate();
+        int valid = validate(user);
         switch (valid) {
             case 0: {
                 HttpSession session = SessionUtils.getSession();
@@ -110,7 +106,7 @@ public class Login implements Serializable {
                         null,
                         new FacesMessage(FacesMessage.SEVERITY_WARN,
                                 "Nombre de usuario o contraseña incorrecta",
-                                "Por favor ingrese dos datos correctos"));
+                                "Error"));
                 return "login";
         }
     }

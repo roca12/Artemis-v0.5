@@ -1,6 +1,7 @@
 package com.artemis.service;
 
 import com.artemis.entities.Cuenta;
+import com.artemis.util.AES;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.persistence.EntityManager;
@@ -29,8 +30,22 @@ public class CuentaService {
         return c;
     }
 
+    public Cuenta getCuentaByUser(String user) {
+        Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c WHERE c.username=:user");
+        queryObj.setParameter("user", user);
+        Cuenta c = new Cuenta();
+        try {
+            c = (Cuenta) queryObj.getSingleResult();
+            return c;
+        } catch (ClassCastException cce) {
+            System.out.println(queryObj);
+        }
+        return c;
+
+    }
+
     public String createNewCuenta(String nombre1, String nombre2, String ap1, String ap2, String username, String password, Integer rank, String correo) {
-        entityMgrObj.getTransaction().begin();;
+        entityMgrObj.getTransaction().begin();
         Cuenta c = new Cuenta();
         c.setId(getMaxCuentaId());
         c.setPrimernombre(nombre1);
@@ -38,7 +53,7 @@ public class CuentaService {
         c.setPrimerapellido(ap1);
         c.setSegundoapellido(ap2);
         c.setUsername(username);
-        c.setPass(password);
+        c.setPass(AES.encrypt(password, AES.KEYART));
         c.setRango(rank);
         c.setCorreo(correo);
         entityMgrObj.persist(c);
@@ -58,9 +73,11 @@ public class CuentaService {
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado con éxito", "");
 
         } catch (Exception e) {
-        } finally {
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "No se pudo eliminar la cuenta", "");
             return "usersadmin.xhtml?faces-redirect=true";
         }
+        return "usersadmin.xhtml?faces-redirect=true";
+
     }
 
     public String updateCuentaDetails(int cuentaId, String nombre1, String nombre2, String ap1, String ap2, String username, String password, Integer rank, String correo) {
@@ -72,7 +89,7 @@ public class CuentaService {
         c.setSegundoapellido(ap2);
         c.setUsername(username);
         if (!password.equals("")) {
-            c.setPass(password);
+            c.setPass(AES.encrypt(password, AES.KEYART));
         }
         c.setRango(rank);
         c.setCorreo(correo);
@@ -88,16 +105,5 @@ public class CuentaService {
             maxcuentaid = (Integer) queryObj.getSingleResult();
         }
         return maxcuentaid;
-    }
-
-    private boolean isCuentaIdPresent(int cuentaId) {
-        boolean idResult = false;
-        Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c WHERE c.id = :id");
-        queryObj.setParameter("id", cuentaId);
-        Cuenta c = (Cuenta) queryObj.getSingleResult();
-        if (c != null) {
-            idResult = true;
-        }
-        return idResult;
     }
 }

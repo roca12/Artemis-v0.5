@@ -77,7 +77,15 @@
         <location>/errores/error.xhtml</location>
     </error-page>
     <error-page> 
-    <exception-type>javax.faces.application.ViewExpiredException</exception-type> 
-    <location>/errores/expired.xhtml</location> 
-</error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type> 
+        <location>/errores/expired.xhtml</location> 
+    </error-page>
+    <filter>
+        <filter-name>primeFacesFileUploadFilter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>primeFacesFileUploadFilter</filter-name>
+        <servlet-name>facesServlet</servlet-name>
+    </filter-mapping>
 </web-app>
