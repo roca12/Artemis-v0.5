@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                template="/templates/default/main.xhtml">
+    <ui:define name="content">
+        <div class="ui-fluid animated bounceInLeft" >
+            <p:growl id="messages" showDetail="true" />          
+            <ui:fragment rendered="#{login.nivel eq 0}">
+                <h1><i class="fa fa-fw fa-chevron-right"/>Lista de accesos al sistema</h1>
+
+                <h:form id="auditForm"  >
+                    <p:growl id="growl"  life="8000" showDetail="true"  />  
+                    <p:dataTable  id="audits"  disabledSelection="true" binding="#{table}" widgetVar="auditsTable" value="#{auditoriaViewController.getListAudit()}" var="audit" reflow="true" rows="15" 
+                                  paginator="true" emptyMessage="No se encontraron campos con esos criterios"
+                                  rowKey="#{audit.id}" >
+                        <p:column headerText="Id" style="width: 5%">
+                            <h:outputText value="#{audit.id}" />                
+                        </p:column>
+                        <p:column headerText="Usuario" filterBy="#{audit.username}" >
+                            <h:outputText value="#{audit.username}" />
+                        </p:column>
+                        <p:column headerText="fecha" >
+                            <h:outputText value="#{audit.fechaentrada}" />
+                        </p:column>
+                        <p:column headerText="host" filterBy="#{audit.hosturl}">
+                            <h:outputText value="#{audit.hosturl}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:fragment>
+        </div>
+    </ui:define>
+</ui:composition>
