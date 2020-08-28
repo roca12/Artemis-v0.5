@@ -16,7 +16,7 @@
                 <h:form id="auditForm"  >
                     <p:growl id="growl"  life="8000" showDetail="true"  />  
                     <p:dataTable  id="audits"  disabledSelection="true" binding="#{table}" widgetVar="auditsTable" value="#{auditoriaViewController.getListAudit()}" var="audit" reflow="true" rows="15" 
-                                  paginator="true" emptyMessage="No se encontraron campos con esos criterios"
+                                  paginator="true" emptyMessage="No se encontraron campos con esos criterios" sortOrder="DESCENDING" 
                                   rowKey="#{audit.id}" >
                         <p:column headerText="Id" style="width: 5%">
                             <h:outputText value="#{audit.id}" />                

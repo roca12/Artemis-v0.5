@@ -3,7 +3,6 @@
                 xmlns:p="http://primefaces.org/ui">
     <!--Admin -->
     <ui:fragment rendered="#{login.nivel eq 0}">
-
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -98,7 +97,24 @@
                 </div>
             </div>
         </div>
-    </ui:fragment> 
+    </ui:fragment>
+    <!--No registrado -->
+    <ui:fragment rendered="#{login.nivel eq 99 }">
+        <div class="animated fadeInLeft">
+            <p:outputLabel value="Registrate e inicia sesión para poder disfrutar de :" style="color: whitesmoke"/>
+            <p:spacer/>
+            <p:spacer/>
+            <p:spacer/>
+            <p:spacer/>
+            <p:outputLabel value="- Biblioteca" style="color: whitesmoke"/>
+            <p:outputLabel value="- Ejercicios de repaso" style="color: whitesmoke"/>
+            <p:outputLabel value="- Calendario de eventos" style="color: whitesmoke"/>
+            <p:outputLabel value="- Inscripción a competencias y eventos" style="color: whitesmoke"/>
+            <p:outputLabel value="- Estadisticas por equipos" style="color: whitesmoke"/>
+            <p:outputLabel value="- y más!" style="color: whitesmoke"/>
+            <li class="lireg" style="padding-bottom: 10px;"><a class="btnreg" href="#{indexViewController.links()}registro.xhtml">Registrarme</a></li>
+        </div>
+    </ui:fragment>
 
 
 </ui:composition>
