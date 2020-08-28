@@ -4,52 +4,132 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" template="/templates/default/mainindex.xhtml">
     <ui:define name="content">    
-        <div class="ui-fluid animated bounceInLeft" >
+
+        <p:growl id="messages" showDetail="true"/>
+        <div class="animated slideInRight">
             <div class="row">                    
                 <div class="col-lg-12" >
-                    <h1>Sistema ARTEMIS</h1>
-                    <h2>Programación competitiva para todos</h2>
+                    <h1 style="font-family: 'Ubuntu';color: #7a0000; font-size: 50px;"><i class="fa fa-2x fa-code-fork"/>Sistema ARTEMIS</h1>
+                    <h2>Bienvenidos a la programación competitiva para todos</h2>
                 </div>
                 <p:separator/>
-                <div class="ibox-content">
-                    <p:growl id="messages"
-                             showDetail="true"
-                             />
+                <h2 style="font-weight: bolder;color: #7a0000;"><i class="fa fa-fw fa-code"/>¿Qué es ARTEMIS?</h2>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <p:outputLabel value="#{msg['artemis.index.artemis1']}" style="text-align: justify"/>
+                        <p:spacer/>
+                        <p:outputLabel value="#{msg['artemis.index.artemis2']}" style="text-align: justify"/>
+                        <p:spacer/>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <img src="https://projects.abranhe.com/programming-languages-logos/src/programming-languages.gif" height="250" width="250"/>
+                        <img src="https://media.tenor.com/images/d1d7f6ef9cf24497a9d61b0a83a0f50e/tenor.gif" height="250" width="250"/>
+                    </div>
                 </div>
+                <p:separator/>
+                <h2 style="font-weight: bolder;color: #7a0000;"><i class="fa fa-fw fa-question-circle"/>¿Qué es la programación competitiva?</h2>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <p:outputLabel value="#{msg['artemis.index.introduccion1']}" style="text-align: justify"/>
+                        <p:spacer/>
+                        <p:outputLabel value="#{msg['artemis.index.introduccion2']}" style="text-align: justify"/>
+                        <p:spacer/>
+                        <p:outputLabel value="#{msg['artemis.index.introduccion3']}" style="text-align: justify"/>
+                        <p:spacer/>
+                        <p:outputLabel value="#{msg['artemis.index.introduccion4']}" style="text-align: justify"/>
+                        <p:spacer/>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <p:spacer/>
+                        <p:spacer/>
+                        <center> 
+                            <iframe width="500" height="300" src="https://www.youtube.com/embed/xAeiXy8-9Y8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                        </center>
+                    </div>
+                </div>
+                <p:separator/>
+                <h2 style="font-weight: bolder;color: #7a0000;"><i class="fa fa-fw fa-globe"/>¿Qué competencias existen a nivel mundial?</h2>
+                <h3>Estas son algunas de las competencias más conocidas</h3>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="border-right: #245269 solid 5px;">
+                        <div class="tituloindex1">
+                            <center><a href="https://codingcompetitions.withgoogle.com/codejam"><i class="fa fa-fw fa-google"/>Google CodeJAM</a></center>
+                        </div>
+                        <p:spacer/>
+                        <div class="textopanelindex">
+                            <p:outputLabel value="#{msg['artemis.index.codejam1']}" style="text-align: justify;padding: 5px;"/>
+                            <p:spacer/>
 
-                <h:form>
-                    <div class="row">
-                        <div class="col-lg-12" >
-                            <div class="col-lg-12">
-                                El crecimiento y expansión que ha presentado la informática ha hecho que las grandes compañías se interesen en vincular excelentes profesionales a su equipo de trabajo, en especial se dedican a buscar buenos programadores para su grupo de desarrollo, los cuales pueden ser incorporados desde eventos que se han estado realizando hace ya varios años, estos han tomado por nombre “maratones de programación”, las cuales se llevan a cabo anualmente, en estas participan varias universidades de todo el mundo donde los problemas expuestos son de tipo lógico, matemático, trigonométrico, entre otros, estos deben resolverse usando algoritmos de programación en el menor tiempo posible.
-                            </div>
+                            <center>
+                                <div class="container1">
+                                    <p:graphicImage value="/resources/imagenes/codejam.jpg" title="Logo Google CodeJam" width="300" />
+                                    <div class="overlay1"><a class="textcompetencia1" href="https://codingcompetitions.withgoogle.com/codejam">Ir a competencia</a></div>
+                                </div>
+                            </center>
+                            <p:spacer/>
+                            <p:outputLabel value="#{msg['artemis.index.codejam2']}" style="text-align: justify;padding: 5px;"/>
                         </div>
                     </div>
-                    <p:spacer/>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-12">                                
-                                Dichos eventos tienen como finalidad principalmente destacar a los estudiantes con mayor habilidad y pasión en el arte de la codificación para que posteriormente compitan a nivel regional, nacional y mundialmente. Además de que los estudiantes destacados sean llamados por importantes compañías para su vinculación laboral.
-                            </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="border-right: #245269 solid 5px;">
+                        <div class="tituloindex2">
+                            <center><a href="https://www.facebook.com/hackercup/"><i class="fa fa-fw fa-facebook"/>Facebook Hacker Cup</a></center>
+                        </div>
+                        <p:spacer/>
+                        <div class="textopanelindex">
+                            <p:outputLabel value="#{msg['artemis.index.hackercup1']}" style="text-align: justify;padding: 5px;"/>
+                            <p:spacer/>
+                            <p:spacer/>
+                            <center>
+                                <div class="container2">
+                                    <p:graphicImage value="/resources/imagenes/hackercup.png" title="Logo Google CodeJam" width="300" />
+                                    <div class="overlay2"><a class="textcompetencia1" href="https://www.facebook.com/hackercup/">Ir a competencia</a></div>
+                                </div>
+                            </center>
+                            <p:spacer/>
+                            <p:outputLabel value="#{msg['artemis.index.hackercup2']}" style="text-align: justify;padding: 5px;"/>
                         </div>
                     </div>
-                    <p:spacer/>
-                    <p:spacer/>
-                    <div class="row">
-                        <div class="col-lg-8" >
-                            <div class="col-lg-6" >
-                                
-                                <p:galleria value="#{indexViewController.images}" var="image"   transitionInterval="10000" effect="slide" effectSpeed="1000" panelWidth="700" panelHeight="500" >
-                                    <p:graphicImage value="/resources/imagenes/#{image}" 
-                                                    name="imagenes/#{image}" height="500" width="700"/>  
-                                </p:galleria>
-                            </div> 
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <div class="tituloindex3">
+                            <center><a href="https://icpc.global/"><i class="fa fa-fw fa-code"/>ACM-ICPC</a></center>
+                        </div>
+                        <p:spacer/>
+                        <div class="textopanelindex">
+                            <p:outputLabel value="#{msg['artemis.index.icpc1']}" style="text-align: justify;padding: 5px;"/>
+                            <p:spacer/>
+                            <center>
+                                <div class="container3">
+                                    <p:graphicImage value="/resources/imagenes/ICPC.jpg" title="Logo Google CodeJam" width="300" />
+                                    <div class="overlay3"><a class="textcompetencia1" href="https://icpc.global/">Ir a competencia</a></div>
+                                </div>
+                            </center>
+                            <p:spacer/>
+                            <p:outputLabel value="#{msg['artemis.index.icpc2']}" style="text-align: justify;padding: 5px;"/>
                         </div>
                     </div>
-                </h:form>
+                </div>
+                <p:separator/>
+                <h2 style="font-weight: bolder;color: #7a0000;"><i class="fa fa-fw fa-coffee"/>¿Qué competencias existen a nivel nacional?</h2>
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12">
+                        <p:outputLabel value="#{msg['artemis.index.ccpl1']}" style="text-align: justify"/>
+                        <p:spacer/>
+                        <p:outputLabel value="#{msg['artemis.index.ccpl2']}" style="text-align: justify"/>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12">
+                        <center>
+                            <p:galleria value="#{indexViewController.images}" var="image" panelWidth="800"  panelHeight="500"  showCaption="true" >
+                                <p:graphicImage value="/resources/imagenes/index/#{image}" title="#{image.replaceAll('.jpg', ' ')}" height="500" width="800"/>
+                            </p:galleria>
+                        </center>
+                    </div>
+                </div>
             </div>
-            
         </div>
+
     </ui:define>
 </ui:composition>        
 

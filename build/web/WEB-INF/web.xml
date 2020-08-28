@@ -6,7 +6,7 @@
          version="3.1">
     <session-config>
         <session-timeout>
-            60
+            30
         </session-timeout>
     </session-config>
     
@@ -68,6 +68,10 @@
     <error-page>
         <error-code>404</error-code>
         <location>/errores/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errores/403.xhtml</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>

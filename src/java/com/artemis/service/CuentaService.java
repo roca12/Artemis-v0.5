@@ -10,10 +10,9 @@ import javax.persistence.Query;
 
 public class CuentaService {
 
-    final String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
-    final EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
-
     public List<Cuenta> getAllCuentaDetails() {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c");
         List<Cuenta> cuentaList = queryObj.getResultList();
         if (cuentaList != null && cuentaList.size() > 0) {
@@ -24,6 +23,8 @@ public class CuentaService {
     }
 
     public Cuenta getCuenta(Integer id) {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c WHERE c.id=:id");
         queryObj.setParameter("id", id);
         Cuenta c = (Cuenta) queryObj.getSingleResult();
@@ -31,20 +32,23 @@ public class CuentaService {
     }
 
     public Cuenta getCuentaByUser(String user) {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         Query queryObj = entityMgrObj.createQuery("SELECT c FROM Cuenta c WHERE c.username=:user");
         queryObj.setParameter("user", user);
         Cuenta c = new Cuenta();
         try {
             c = (Cuenta) queryObj.getSingleResult();
             return c;
-        } catch (ClassCastException cce) {
+        } catch (Exception e) {
             System.out.println(queryObj);
         }
         return c;
-
     }
 
     public String createNewCuenta(String nombre1, String nombre2, String ap1, String ap2, String username, String password, Integer rank, String correo) {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         entityMgrObj.getTransaction().begin();
         Cuenta c = new Cuenta();
         c.setId(getMaxCuentaId());
@@ -63,6 +67,8 @@ public class CuentaService {
     }
 
     public String deleteCuentaDetails(Cuenta c) {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         FacesMessage message = new FacesMessage();
         try {
             entityMgrObj.getTransaction().begin();
@@ -81,6 +87,8 @@ public class CuentaService {
     }
 
     public String updateCuentaDetails(int cuentaId, String nombre1, String nombre2, String ap1, String ap2, String username, String password, Integer rank, String correo) {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         entityMgrObj.getTransaction().begin();
         Cuenta c = entityMgrObj.find(Cuenta.class, cuentaId);
         c.setPrimernombre(nombre1);
@@ -99,6 +107,8 @@ public class CuentaService {
     }
 
     private int getMaxCuentaId() {
+        String PERSISTENCE_UNIT_NAME = "ArtemiswarPU";
+        EntityManager entityMgrObj = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
         int maxcuentaid = 1;
         Query queryObj = entityMgrObj.createQuery("SELECT MAX(c.id)+1 FROM Cuenta c");
         if (queryObj.getSingleResult() != null) {

@@ -3,6 +3,15 @@
   <jsp-descriptor>
     <keepgenerated>false</keepgenerated>
     <debug>true</debug>
+    <verbose>true</verbose>
   </jsp-descriptor>
+  <session-descriptor>
+      <invalidate-on-relogin>true</invalidate-on-relogin>
+  </session-descriptor>
+  <container-descriptor>
+      <servlet-reload-check-secs>1</servlet-reload-check-secs>
+      <save-sessions-enabled>false</save-sessions-enabled>
+      <optimistic-serialization>true</optimistic-serialization>
+  </container-descriptor>
   <context-root>/Artemis-war</context-root>
 </weblogic-web-app>

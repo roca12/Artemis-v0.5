@@ -5,12 +5,14 @@ import com.artemis.service.AuditoriaService;
 import com.artemis.service.CuentaService;
 import com.artemis.service.VistasMesAnioService;
 import com.artemis.util.AES;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -25,8 +27,6 @@ public class Login implements Serializable {
     private String pwd;
     private int nivel = 99;
     private String user;
-    private final AuditoriaService auditoriaService = new AuditoriaService();
-    private final VistasMesAnioService vistasMesAnioService = new VistasMesAnioService();
 
     public String getPwd() {
         return pwd;
@@ -44,6 +44,16 @@ public class Login implements Serializable {
         this.user = user;
     }
 
+    public void checkAlreadyLoggedin() throws IOException {
+        if (nivel == 0) {
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + "/admin.xhtml");
+        } else if (nivel == 5) {
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+        }
+    }
+
     public static String getClientIpAddress(HttpServletRequest request) {
         String xForwardedForHeader = request.getHeader("X-Forwarded-For");
         if (xForwardedForHeader == null) {
@@ -53,13 +63,14 @@ public class Login implements Serializable {
         }
     }
 
-   
     public int validate(String user) {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String url = getClientIpAddress(request);
-        CuentaService cuentaService= new CuentaService();
-        Cuenta c= cuentaService.getCuentaByUser(user);
-        if (AES.decrypt(c.getPass(),AES.KEYART).equals(pwd) && c.getRango() == 0) {
+        CuentaService cuentaService = new CuentaService();
+        AuditoriaService auditoriaService = new AuditoriaService();
+        VistasMesAnioService vistasMesAnioService = new VistasMesAnioService();
+        Cuenta c = cuentaService.getCuentaByUser(user);
+        if (AES.decrypt(c.getPass(), AES.KEYART).equals(pwd) && c.getRango() == 0) {
             nivel = 0;
             auditoriaService.createAudit(c.getUsername(), url);
             try {
@@ -70,7 +81,7 @@ public class Login implements Serializable {
             }
 
             return 0;
-        } else if (AES.decrypt(c.getPass(),AES.KEYART).equals(pwd) && c.getRango() == 5) {
+        } else if (AES.decrypt(c.getPass(), AES.KEYART).equals(pwd) && c.getRango() == 5) {
             nivel = 5;
             auditoriaService.createAudit(c.getUsername(), url);
             auditoriaService.createAudit(c.getUsername(), url);
