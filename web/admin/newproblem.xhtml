@@ -1,0 +1,214 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+    <ui:define name="content">
+        <p:growl id="growl" life="6000" showSummary="true" showDetail="true" />
+        <ui:fragment rendered="#{((login.nivel eq 0))}">
+            <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"/>Administración de problemas</h1>
+            <p:separator/>
+            <h2>Agregar nuevos problemas</h2>
+            <div class="ui-fluid animated bounceInLeft" >
+                <p:tabView>
+                    <p:tab title="Agregar problema externo">
+                        <h:form  id="newproblemaform">
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Titulo del ejercicio:" for="inputtitulo"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p:inputText id="inputtitulo" value="#{problemasViewController.titulonew}" required="true"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Juez Online de origen:" for="advanced"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p:selectOneMenu id="advanced" value="#{problemasViewController.juezselected}"  panelStyle="width:600px" 
+                                                     effect="fade" var="j" style="width:520px" filter="true" filterMatchMode="startsWith" >
+                                        <f:selectItems value="#{problemasViewController.listajueces}" var="juez" itemLabel="#{juez.label}" itemValue="#{juez.value}" />
+
+                                        <p:column style="width:40px">
+                                            <h:graphicImage value="/resources/imagenes/icons/#{j}" style="width: 20px;height: 20px"  />
+                                        </p:column>
+
+                                        <p:column >
+                                            <h:outputText value="#{j.substring(0,j.indexOf('.'))}" />
+                                        </p:column>
+
+                                        <f:facet name="footer">
+                                            <p:separator />
+                                            <h:outputText value="#{problemasViewController.jueces.size()} jueces online" style="font-weight:bold;"/>
+                                        </f:facet>
+
+                                        <p:ajax event="change" update="advanced"/>
+                                    </p:selectOneMenu>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="ID del ejercicio en el juez externo:" for="inputjudgeid"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="inputjudgeid" value="#{problemasViewController.judgeidnew}" required="true"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Dificultad del ejercicio:" for="inputdiff"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="inputdiff" value="#{problemasViewController.diffnew}" required="true"/>
+                                    <p:slider for="inputdiff" minValue="1" maxValue="15"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:outputLabel value="1= fácil  15= muy difícil" ></p:outputLabel>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Tema del ejercicio 1:" for="type1" ></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="type1" value="#{problemasViewController.type1new}" required="true"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Tema del ejercicio 2:" for="type2"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="type2" value="#{problemasViewController.type2new}"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Tema del ejercicio 3:" for="type3"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="type3" value="#{problemasViewController.type3new}"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Tema del ejercicio 4:" for="type4"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="type4" value="#{problemasViewController.type4new}"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p:outputLabel value="Url del ejercicio:" for="url"></p:outputLabel>
+                                </div>
+                                <div class="col-lg-4">
+                                    <p:inputText id="url" value="#{problemasViewController.urlnew}" required="true"></p:inputText>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p:outputLabel value="Todos los valores con * son obligatorios" ></p:outputLabel>
+                                </div>
+                            </div>
+                            <p:spacer/>
+                            <p:spacer/>
+                            <p:spacer/>
+                            <div class="row">                   
+                                <p:commandButton  icon="fa fa-fw fa-chevron-right"  value="Agregar nuevo ejercicio externo"   styleClass="btn btn-success btnSpace" style="background-color: #449d44;background-image: none;color:whitesmoke;" update="newproblemaform" actionListener="#{problemasViewController.crearejerext()}" oncomplete="newproblem.xhtml?faces-redirect=true"/>
+                            </div>
+                        </h:form>
+                    </p:tab>
+                    <p:tab title="Agregar problema Artemis">
+
+                    </p:tab>
+
+                </p:tabView>
+
+
+                <p:separator/>
+                <ui:fragment rendered="#{login.nivel eq 0}">
+                    <!-- Tabla -->
+                    <h1><i class="fa fa-fw fa-chevron-right"/>Problemas externos</h1>
+                    <center><h2><h:outputText value="Lista de ejericicios externos"/></h2></center>
+                    <h:form id="problemasextForm" >
+                        <p:growl id="growl"  life="800" showDetail="true"  />  
+                        <p:dataTable  id="ejerext"  disabledSelection="true" binding="#{table}" widgetVar="ejerextTable" value="#{problemasViewController.getejerextList()}" var="eext" reflow="true" rows="7" 
+                                      paginator="true" emptyMessage="No se encontraron ejercicios con esos criterios"
+                                      rowKey="#{eext.id}" >
+
+                            <p:column headerText="Id" width="5%">
+                                <h:outputText value="#{eext.id}" />                
+                            </p:column>
+                            <p:column headerText="Titulo ejercicio" filterBy="#{eext.title}">
+                                <h:outputText value="#{eext.title}" />
+                            </p:column>
+                            <p:column headerText="Juez" width="8%">
+                                <h:outputText value="#{eext.judge}" />
+                            </p:column>
+
+                            <p:column headerText="Juez ID" width="8%">
+                                <h:outputText value="#{eext.judgeid}" />
+                            </p:column>
+                            <p:column headerText="Diff" filterBy="#{eext.difficult}" width="5%">
+                                <h:outputText value="#{eext.difficult}" />
+                            </p:column>
+                            <p:column headerText="Tipo 1" filterBy="#{eext.type1}" width="8%">
+                                <h:outputText value="#{eext.type1}" />
+                            </p:column>
+                            <p:column headerText="Tipo 2" filterBy="#{eext.type2}" width="8%" >
+                                <h:outputText value="#{eext.type2}" />
+                            </p:column>
+                            <p:column headerText="Tipo 3" filterBy="#{eext.type3}" width="8%">
+                                <h:outputText value="#{eext.type3}" />
+                            </p:column>
+                            <p:column headerText="Tipo4" filterBy="#{eext.type4}" width="8%">
+                                <h:outputText value="#{eext.type4}" />
+                            </p:column>
+                            <p:column headerText="URL" width="10%">
+                                <p:button  icon="fa fa-fw fa-globe" id="btn"  value="Ir" href="#{eext.url}"  
+                                           style="background-color: #449d44;background-image: 
+                                           none;color:whitesmoke;width: 70px;height: 30px" />
+                                <p:tooltip id="toolTip" for="@previous" value="Ir a la pagina del ejercicio" trackMouse="true" />
+                            </p:column>
+
+                            <p:column headerText="Opciones" style="width: 10%" >
+
+                                <center>
+                                    <div class="col-lg-2" style="padding-right: 20px"> 
+                                        <p:commandButton  icon="fa fa-fw fa-trash-o" id="btn3"  update="ejerext" onclick="PF('dlg').show();"  styleClass="btn btn-danger" style="background-color: #850F3F;background-image: none;color:whitesmoke;width: 30px;height: 30px" >
+                                            <f:setPropertyActionListener value="#{eext}" target="#{problemasViewController.ejercicioextselected}" />
+                                        </p:commandButton>
+                                        <p:tooltip id="toolTipbtn3" for="@previous" value="Eliminar" trackMouse="true" />
+                                    </div>
+                                </center>
+
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                    <!-- Dialogo de confirmacion de eliminacion -->
+                    <p:dialog header="Confirmación" widgetVar="dlg" showEffect="fade" responsive="true" height="50%" >
+                        <h:form>
+                            <h:outputText value="¿Desea eliminar el campo permanentemente ?" />
+                            <p:commandButton  value="Aceptar" update="problemasextForm" icon="fa fa-fw fa-trash-o"  action="#{problemasViewController.deleteejerextById()}"  styleClass="btn btn-principal"  style="background-color: darkblue;background-image: none;color:whitesmoke;"/>
+                            <p:commandButton   value="Cancelar" icon="fa fa-fw fa-chevron-left"  onclick="PF('dlg').hide();"  styleClass="btn btn-danger" style="background-color: darkred;background-image: none;color:whitesmoke;" />
+                        </h:form>
+                    </p:dialog> 
+                </ui:fragment>
+            </div>
+        </ui:fragment>
+    </ui:define> 
+</ui:composition>

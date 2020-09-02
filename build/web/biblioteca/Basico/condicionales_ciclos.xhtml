@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -8,39 +7,130 @@
                 xmlns:pe="http://primefaces.org/ui/extensions"
                 xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
                 template="/templates/default/main.xhtml">
+    <!--Se llama al template -->
     <ui:define name="content">
+        <!--Divisor con animación -->
         <div class="ui-fluid animated bounceInLeft" >
+            <!-- Titulo de clase h1 con icono asociado-->
             <div class="row">
-                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Condicionales y ciclos</h1>
+                <h1 class="titulotema" style="color: red"><i class="fa fa-fw fa-chevron-right vinetatitulo"/>Condicionales y ciclos</h1>
             </div>
+            <!-- Texto del tema-->
             <div class="col-lg-12">
                 <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.texta']}" style="text-align: justify"/>
-                    <br></br>
-                    <br></br>
-                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.textb']}" style="text-align: justify"/>
-                    <br></br>
-                    <br></br>
+                    <div class="col-lg-11">
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.texta']}" style="text-align: justify;font-size: 18px"/>
+                    </div>
+                </div>
+                <p:spacer height="20px"/>
+                <div class="row">
+                    <div class="col-lg-11">
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.textb']}" style="text-align: justify;font-size: 18px"/>
+                    </div>
+                </div>
+                <!-- Imagenes -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <center>
+                            <p:graphicImage value="https://4.bp.blogspot.com/-sgRQXoVgjsE/VAoeShsSjpI/AAAAAAAAADI/g58WZfRVYZE/s1600/do_while.gif" width="250" height="400"  />
+                            <p:tooltip for="@previous" trackMouse="true" value="Tomado de: https://4.bp.blogspot.com/-sgRQXoVgjsE/VAoeShsSjpI/AAAAAAAAADI/g58WZfRVYZE/s1600/do_while.gif"/>
+                        </center>
+                    </div>
+                    <div class="col-lg-6">
+                        <center>
+                            <p:graphicImage value="https://3.bp.blogspot.com/-vRouRKZaj9M/UbdSfGNif4I/AAAAAAAAAHQ/X5wOYnb-B5o/s1600/if-else.png" width="300" height="400"  />
+                            <p:tooltip for="@previous" trackMouse="true" value="Tomado de: https://3.bp.blogspot.com/-vRouRKZaj9M/UbdSfGNif4I/AAAAAAAAAHQ/X5wOYnb-B5o/s1600/if-else.png"/>
+                        </center>
+                    </div>
+                </div>
+                <!-- Videos -->
+                <p:spacer height="20px"/>
+                <div class="col-lg-12">
+                    <h2 class="subtitulotema"><i class="fa fa-fw fa-youtube-play"/>#{msg['artemis.biblioteca.general.codigoejemplo.videos']}</h2>
                 </div>
                 <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.ejemplo']}" style="color:red"/>
+                    <div class="col-lg-6">
+                        <center>
+                            <iframe width="500" height="315" src="https://www.youtube-nocookie.com/embed/EH5p2o65Ny0" 
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen="true"></iframe>
+                        </center>
+                    </div>
+                    <div class="col-lg-6">
+                        <center>
+                            <iframe width="500" height="315" src="https://www.youtube-nocookie.com/embed/yNvkL7L0_Vo" 
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen="true"></iframe>
+                        </center>
+                    </div>
                 </div>
+                <p:spacer height="20px"/>
+                <div class="col-lg-11">
+                    <h2 class="subtitulotema"><i class="fa fa-fw fa-keyboard-o"/>#{msg['artemis.biblioteca.general.codigoejemplo.entradasalida']}</h2>
+                </div>
+                <p:spacer height="30px"/>
+                <div class="row">
+                    <div class="col-lg-11">
+                        <p:outputLabel value="#{msg['artemis.biblioteca.basico.ciclos.ejemplo']}" style="text-align: left;font-size: 15px"/>
+                        <p:tooltip for="@previous" trackMouse="true" value="#{msg['artemis.biblioteca.general.codigoejemplo.tootip']}"/>
+                    </div>
+                </div>
+                <p:spacer height="20px"/>
+
                 <h:form>
-                    <!-- titulo codigo de ejemplo con su icono respectivo-->
-                    <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
-                    <h3 style="color:blue ">Java</h3>
-                    <!-- codemirror java-->
-                    <pe:codeMirror id="codeMirror1" 
-                                   value="#{codemirror.ciclosjava}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
-                    <h3 style="color: red">C++</h3>
-                    <pe:codeMirror id="codeMirror2" 
-                                   value="#{codemirror.cicloscpp}" lineNumbers="true" mode="text/x-c++src"  readonly="true"/>
-                    <h3 style="color: green">Python</h3>
-                    <pe:codeMirror id="codeMirror3" 
-                                   value="#{codemirror.ciclospy}" lineNumbers="true" mode="text/x-python"  readonly="true"/>
+                    <div class="col-lg-12"> 
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h2 class="subtitulotema"><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
+                            </div>
+                            <div class="col-lg-6">
+                                <p:outputLabel for="theme" value="Skin del editor: " />
+                                <p:selectOneMenu id="theme" value="#{codemirror.theme}" style="font-size: 20px">
+                                    <f:selectItem itemLabel="Selecione uno...." itemValue="eclipse" />
+                                    <f:selectItems value="#{codemirror.themes}" />
+                                    <p:ajax update="codeMirror1,codeMirror2,codeMirror3" />
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+                        <!-- titulo codigo de ejemplo con su icono respectivo-->
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <p:graphicImage value="/resources/imagenes/java.png" width="50px" height="50px"/>
+                            </div> 
+                            <div class="col-lg-6">
+                                <h3 style="color:blue ">Java</h3>
+                            </div>
+                        </div>
+                        <pe:codeMirror id="codeMirror1" value="#{codemirror.ciclosjava}" theme="#{codemirror.theme}" lineNumbers="true" mode="text/x-java"  readonly="true" matchBrackets="true"/>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <p:graphicImage value="/resources/imagenes/C++.png" width="50px" height="50px"/>
+                            </div> 
+                            <div class="col-lg-6">
+                                <h3 style="color: red">C++</h3>
+                            </div>
+                        </div>
+                        <pe:codeMirror id="codeMirror2"  value="#{codemirror.cicloscpp}" theme="#{codemirror.theme}" lineNumbers="true" mode="text/x-c++src"  readonly="true" matchBrackets="true"/>
+                        <p:spacer/>
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <p:graphicImage value="/resources/imagenes/python.png" width="50px" height="50px"/>
+                            </div> 
+                            <div class="col-lg-6">
+                                <h3 style="color: green">Python</h3>
+                            </div>
+                        </div>
+                        <pe:codeMirror id="codeMirror3" value="#{codemirror.ciclospy}" theme="#{codemirror.theme}" lineNumbers="true" mode="text/x-python"  readonly="true" matchBrackets="true"/>
+                    </div>
                 </h:form>
             </div>
         </div>
+        <!-- Espacio al final-->
+        <p:spacer height="40px"/>
     </ui:define>  
 </ui:composition>
+
+
+
 

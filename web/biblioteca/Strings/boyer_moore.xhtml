@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -14,80 +13,13 @@
         <div class="ui-fluid animated bounceInLeft" >
             <!-- Titulo de clase h1 con icono asociado-->
             <div class="row">
-                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Algoritmo de Boyer-Moore</h1>
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Titulo</h1>
             </div>
             <!-- Texto del tema-->
             <div class="col-lg-12">
                 <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.texta']}" style="text-align: justify"/>
+                    <p:outputLabel value="texto" style="text-align: justify"/>
                 </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textb']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <i class="fa fa-fw fa-chevron-circle-right" style="color: blue"/><p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textc']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <i class="fa fa-fw fa-chevron-circle-right" style="color: blue"/><p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textd']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.texte']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textf']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textg']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.texth']}" style="text-align: justify; text-decoration:underline; color: blue"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.texti']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <i class="fa fa-fw fa-chevron-circle-right" style="color: blue"/><p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textj']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <i class="fa fa-fw fa-chevron-circle-right" style="color: blue"/><p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textk']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textl']}" style="text-align: justify; text-decoration:underline; color: blue"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textm']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.textn']}" style="text-align: justify; text-decoration:underline; color: blue"/>
-                </div>
-                <p:spacer/>
-                <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.strings.boyermoore.texto']}" style="text-align: justify"/>
-                </div>
-                <p:spacer/>
-                <!-- Ejemplo con imagen e icono-->
-                <div class="row">
-                    <h2><i class="fa fa-fw fa-check"/>Ejemplos</h2>
-                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/BoyerMoore_GuiaDelProgramadorCompetitivo.JPG" width="600" height="400"/>
-                </div>
-                <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
-                <h3>Java</h3>
-                <!-- codemirror java-->
-                <pe:codeMirror id="codeMirror" 
-                               value="#{codemirror.boyermoore}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
             </div>
         </div>
     </ui:define>  

@@ -278,3 +278,24 @@ h2{
     background-color: whitesmoke;
     transition: all 0.3s;
 }
+.vinetatitulo:hover{
+    transform: rotate(90deg);
+    transition: 0.3s all;
+}
+.vinetatitulo{
+    transition: 0.3s all;
+}
+.titulotema{
+    transition: 0.3s all;
+}
+.titulotema:hover{
+    background-color: #ffdcd3;
+    transition: 0.3s all;
+}
+.subtitulotema{
+    transition: 0.3s all;
+}
+.subtitulotema:hover{
+    background-color: #d7d7d9;
+    transition: 0.3s all;
+}
