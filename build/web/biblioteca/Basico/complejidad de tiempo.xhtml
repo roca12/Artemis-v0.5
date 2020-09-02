@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" template="/templates/default/main.xhtml">
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
+                template="/templates/default/main.xhtml">
+    <!--Se llama al template -->
     <ui:define name="content">
-        <!--divisor con animacion-->
+        <!--Divisor con animación -->
         <div class="ui-fluid animated bounceInLeft" >
-            <!--titulo de clase h1 con icono-->
+            <!-- Titulo de clase h1 con icono asociado-->
             <div class="row">
-                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i> Complejidad de tiempo (Eficencia algorítmica)</h1>
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Titulo</h1>
             </div>
             <!-- Texto del tema-->
             <div class="col-lg-12">
                 <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.basico.complejidad.text']}" style="text-align: justify "/>
-                </div>
-                <!--Ejemplo con imagen e icono-->
-                <div class="row">
-                    <h2><i class="fa fa-fw fa-check"/>Ejemplos</h2>
-                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/Complejidad_De_Tiempo.png" width="600" height="550"/>
+                    <p:outputLabel value="texto" style="text-align: justify"/>
                 </div>
             </div>
         </div>
     </ui:define>  
 </ui:composition>
+
+
+
 

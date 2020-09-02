@@ -71,4 +71,38 @@ CREATE TABLE archivosayuda (
 
 drop table archivosayuda;
 
+SELECT 
+    *
+FROM
+    cuentas
+WHERE
+    username = 'admin';
+
+CREATE TABLE ejerciciosexternos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(200) NOT NULL,
+    judge VARCHAR(50) NOT NULL,
+    judgeid VARCHAR(50) NOT NULL,
+    difficult INT NOT NULL,
+    type1 VARCHAR(50) NOT NULL,
+    type2 VARCHAR(50),
+    type3 VARCHAR(50),
+    type4 VARCHAR(50),
+    url VARCHAR(1000) NOT NULL
+);
+drop table ejerciciosexternos;
+
+CREATE TABLE ejerciciosartemis (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(200) NOT NULL,
+    alias VARCHAR(200) NOT NULL,
+    difficult INT NOT NULL,
+    type1 VARCHAR(50) NOT NULL,
+    type2 VARCHAR(50),
+    type3 VARCHAR(50),
+    type4 VARCHAR(50),
+    filebytes MEDIUMBLOB NOT NULL,
+    ext VARCHAR(10)
+);
+insert into ejerciciosexternos values(null,'prueba','UVA','PRUEBAID',4,'strings','strings','strings','strings','https://icpcarchive.ecs.baylor.edu/');
 

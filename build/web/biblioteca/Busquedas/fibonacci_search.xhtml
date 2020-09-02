@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -8,48 +7,20 @@
                 xmlns:pe="http://primefaces.org/ui/extensions"
                 xmlns:showcase="http://primefaces.org/ui/extensions/showcase"
                 template="/templates/default/main.xhtml">
+    <!--Se llama al template -->
     <ui:define name="content">
+        <!--Divisor con animación -->
         <div class="ui-fluid animated bounceInLeft" >
-
             <!-- Titulo de clase h1 con icono asociado-->
             <div class="row">
-                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Busqueda de Fibonacci</h1>
+                <h1 style="color: red"><i class="fa fa-fw fa-chevron-right"></i>Titulo</h1>
             </div>
             <!-- Texto del tema-->
             <div class="col-lg-12">
                 <div class="row">
-                    <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.text']}" style="text-align: justify"/><br/>
-                    <h4 style="color: red"><p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.text1']}" style="text-align: justify"/></h4>
-                    <div class="col-lg-12">
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.texta']}" style="text-align: justify"/><br/>
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.textb']}" style="text-align: justify"/><br/>
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.textc']}" style="text-align: justify"/><br/>
-                    </div>
-                    <h4 style="color: red"><p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.textd']}" style="text-align: justify"/></h4>
-                    <div class="col-lg-12" >
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.texte']}" style="text-align: justify"/><br/>
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.textf']}" style="text-align: justify"/><br/>
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.textg']}" style="text-align: justify"/><br/>
-                        <p:outputLabel value="#{msg['artemis.biblioteca.busquedas.fibonacci.texth']}" style="text-align: justify"/><br/>
-                    </div>
+                    <p:outputLabel value="texto" style="text-align: justify"/>
                 </div>
-                <!-- Ejemplo con imagen e icono-->
-                <!-- 
-                <div class="row">
-                    <h2><i class="fa fa-fw fa-check"/>Ejemplos</h2>
-                    <h:graphicImage   value="#{FacesContext.getCurrentInstance().getExternalContext()}/resources/imagenes/operadoreslogicos.png" width="600" height="400"/>
-                </div> -->
-                <!-- Form de codigos-->
-                <h:form>
-                    <!-- titulo codigo de ejemplo con su icono respectivo-->
-                    <h2><i class="fa fa-fw fa-code"/>#{msg['artemis.biblioteca.general.codigoejemplo.title']}</h2>
-                    <h3>Java</h3>
-                    <!-- codemirror java-->
-                    <pe:codeMirror id="codeMirror1" 
-                                   value="#{codemirror.fibonaccisearch}" lineNumbers="true" mode="text/x-java"  readonly="true"/>
-                </h:form>
             </div>
-
         </div>
     </ui:define>  
 </ui:composition>
