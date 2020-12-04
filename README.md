@@ -4,11 +4,11 @@
 <p align="center">
  <img width="100px" src="https://www.iconsdb.com/icons/preview/royal-blue/code-xxl.png" align="center"  />
  <h2 align="center">SIstema de entrenamiento en programación competitiva ARTEMIS</h2>
- <p align="center">Universidad ECCI</p>
+ <p align="center">Diego Rodriguez - Grupo de programación competitiva - Universidad ECCI</p>
 </p>
   <p align="center">
     <a href="https://github.com/roca12/Artemis_v1.0/issues">
-      <img alt="Issues" src="https://img.shields.io/github/issues/roca12/Artemis_v1.0?color=0088ff" />
+      <img alt="Issues" src="https://img.shields.io/github/issues/roca12/Artemis_v1.0" />
     </a>
     <a href="https://github.com/roca12/Artemis_v1.0/pulls">
       <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/roca12/Artemis_v1.0?color=0088ff" />
