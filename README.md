@@ -3,7 +3,7 @@
 
 <p align="center">
  <img width="100px" src="https://www.iconsdb.com/icons/preview/royal-blue/code-xxl.png" align="center"  />
- <h2 align="center">SIstema de entrenamiento en programación competitiva ARTEMIS</h2>
+ <h2 align="center">Sistema de entrenamiento en programación competitiva ARTEMIS</h2>
  <p align="center">Diego Rodriguez - Grupo de programación competitiva - Universidad ECCI</p>
 </p>
   <p align="center">
